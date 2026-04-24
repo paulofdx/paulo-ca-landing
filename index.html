@@ -16,6 +16,7 @@
             --red: #9f0000;
             --deep-red: #760000;
             --gold: #b08a35;
+            --whatsapp: #25D366;
         }
 
         * {
@@ -232,6 +233,75 @@
             font-family: "Helvetica Neue", Arial, sans-serif;
             font-size: 0.72rem;
             color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        /* WHATSAPP CONTACT BOX */
+        .whatsapp-contact-box {
+            margin: 24px auto 0;
+            padding: 22px;
+            max-width: 640px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            background: #f7f7f7;
+            border: 1px solid #d4d4d4;
+            border-left: 5px solid var(--whatsapp);
+        }
+
+        .whatsapp-text h3 {
+            margin: 0 0 8px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-size: 0.95rem;
+        }
+
+        .whatsapp-text p {
+            margin: 0 0 14px;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            background: var(--whatsapp);
+            color: #ffffff;
+            text-decoration: none;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-weight: 800;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 9px 14px;
+            border-radius: 3px;
+        }
+
+        .whatsapp-button:hover {
+            background: #1fb85a;
+        }
+
+        .whatsapp-qr {
+            text-align: center;
+            flex: 0 0 auto;
+        }
+
+        .whatsapp-qr img {
+            width: 120px;
+            height: 120px;
+            display: block;
+            border: 1px solid #cfcfcf;
+            background: #ffffff;
+            padding: 6px;
+        }
+
+        .qr-caption {
+            margin-top: 7px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.68rem;
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 0.7px;
         }
@@ -517,6 +587,11 @@
             .archives-panel {
                 padding: 20px;
             }
+
+            .whatsapp-contact-box {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -571,6 +646,36 @@
                             <img src="newspaper-eng.png" alt="The Montreal Heartbreak Gazette - Click to view special report">
                         </a>
                         <div class="click-hint">Click to read</div>
+                    </div>
+                </div>
+
+                <!-- WHATSAPP LINK AND QR CODE -->
+                <div class="whatsapp-contact-box">
+                    <div class="whatsapp-text">
+                        <h3>Direct Apology Hotline</h3>
+                        <p>
+                            For urgent apology reviews, sentence reductions, or forgiveness-related inquiries,
+                            contact Paulo directly on WhatsApp.
+                        </p>
+
+                        <a class="whatsapp-button"
+                           href="https://wa.me/15149443761"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Message Paulo on WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="whatsapp-qr">
+                        <a href="https://wa.me/15149443761"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           title="Open WhatsApp chat with Paulo">
+                            <img
+                                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F15149443761"
+                                alt="WhatsApp QR code for Paulo">
+                        </a>
+                        <div class="qr-caption">Scan to open WhatsApp</div>
                     </div>
                 </div>
 
