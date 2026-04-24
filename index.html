@@ -3,73 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Paulo da Silva Apology Archives | Serving the Hanoi Bureau</title>
+    <title>Doghouse Media | The Apology Archives</title>
     <style>
+        /* --- Base & Typography --- */
         body {
             font-family: 'Georgia', serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
             margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
+            padding: 0;
+            line-height: 1.6;
         }
 
-        .main-container {
-            width: 100%;
-            max-width: 900px;
-            background-color: white;
-            padding: 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        /* --- Top Navigation Bar --- */
+        .top-nav {
+            background-color: #111;
+            color: white;
+            padding: 10px 40px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+        .top-nav .logo { font-weight: bold; font-size: 1.2em; }
+        .top-nav .nav-links span { margin-left: 20px; cursor: pointer; color: #aaa; transition: color 0.2s;}
+        .top-nav .nav-links span:hover { color: #fff; }
+
+        /* --- Breaking News Ticker --- */
+        .breaking-ticker {
+            background-color: #900;
+            color: white;
+            padding: 8px 40px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: flex;
             align-items: center;
         }
+        .ticker-label {
+            background-color: white;
+            color: #900;
+            padding: 2px 8px;
+            margin-right: 15px;
+            border-radius: 3px;
+        }
 
-        header {
+        /* --- Main Page Header --- */
+        .page-header {
             text-align: center;
-            width: 100%;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
+            padding: 50px 20px 30px;
+            border-bottom: 3px double #111;
+            max-width: 1100px;
+            margin: 0 auto 30px;
         }
-
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .page-header h1 {
+            font-size: 3.5em;
+            margin: 0 0 10px 0;
             text-transform: uppercase;
-            font-weight: bold;
-            color: #222;
+            letter-spacing: -1px;
         }
-
-        header p {
-            font-size: 1.2em;
+        .page-header p {
+            font-size: 1.3em;
             font-style: italic;
-            color: #666;
+            color: #555;
             margin: 0;
         }
 
-        .header-line {
-            width: 80%;
-            height: 2px;
-            background-color: #333;
-            margin-bottom: 40px;
+        /* --- Content Layout (Grid) --- */
+        .content-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            padding: 0 20px;
         }
 
+        /* --- Main Column (Thumbnails) --- */
+        .main-column {
+            flex: 3;
+        }
+        .section-title {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-transform: uppercase;
+            border-bottom: 2px solid #111;
+            padding-bottom: 5px;
+            margin-top: 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+        
         .archives-gallery {
-            width: 100%;
             display: flex;
             flex-direction: row; 
             justify-content: center;
-            flex-wrap: wrap; 
             gap: 40px; 
+            padding: 40px 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            margin-bottom: 30px;
         }
 
         .gallery-item {
-            display: inline-block;
+            text-align: center;
             position: relative;
         }
 
-        /* THE FIX: Forced tiny width */
+        /* THE FIX: Forced tiny width remains untouched */
         .gallery-item img {
             width: 115px !important; 
             height: auto !important;
@@ -78,57 +120,143 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s;
             cursor: pointer;
+            margin: 0 auto 10px;
         }
 
         .gallery-item a:hover img {
             transform: scale(1.1); 
             box-shadow: 0 8px 16px rgba(0,0,0,0.25);
         }
-
-        footer {
-            margin-top: 60px;
-            font-size: 0.85em;
+        
+        .click-hint {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.75em;
             color: #888;
+            text-transform: uppercase;
+        }
+
+        /* --- Sidebar Column --- */
+        .sidebar {
+            flex: 1;
+            border-left: 1px solid #ddd;
+            padding-left: 30px;
+        }
+        
+        .widget {
+            margin-bottom: 40px;
+        }
+        
+        .widget ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .widget ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1em;
+        }
+        
+        .widget ul li a {
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: color 0.2s;
+        }
+        
+        .widget ul li a:hover { color: #900; }
+        
+        .statement-box {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-left: 4px solid #111;
+            font-style: italic;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111;
+            color: #ccc;
             text-align: center;
-            width: 100%;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.85em;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-
-        <header>
-            <h1>The Paulo da Silva Apology Archives</h1>
-            <p>Official repository detailing the 120-hour silence sentence (Hanoi Docket #26042026).</p>
-        </header>
-        
-        <div class="header-line"></div>
-
-        <div class="archives-gallery">
-
-            <div class="gallery-item">
-                <a href="newspaper-viet.png" target="_blank" title="Xem Báo To Kinh Đô & Đời Sống">
-                    <img src="newspaper-viet.png" alt="Kinh Đô & Đời Sống - Click để xem ảnh to">
-                </a>
-            </div>
-
-            <div class="gallery-item">
-                <a href="newspaper-eng.png" target="_blank" title="View The Montreal Heartbreak Gazette Special Report">
-                    <img src="newspaper-eng.png" alt="The Montreal Heartbreak Gazette - Click to view special report">
-                </a>
-            </div>
-
+    <div class="top-nav">
+        <div class="logo">DOGHOUSE MEDIA GROUP</div>
+        <div class="nav-links">
+            <span>News</span>
+            <span>Opinion</span>
+            <span>Apologies</span>
+            <span>Subscribe</span>
         </div>
+    </div>
 
-        <footer>
-            <p>Copyright © 2026 Doghouse Media Group. All rights reserved. <br>
-               Current Sentence Status: Reflecting deeply.</p>
-        </footer>
+    <div class="breaking-ticker">
+        <span class="ticker-label">BREAKING</span>
+        Montreal man enters hour 48 of silence mandate; Appeals for leniency denied by Hanoi jurisdiction.
+    </div>
+
+    <header class="page-header">
+        <h1>The Apology Archives</h1>
+        <p>Official repository detailing the 120-hour silence sentence (Hanoi Docket #26042026).</p>
+    </header>
+
+    <div class="content-wrapper">
+        
+        <main class="main-column">
+            <h2 class="section-title">Latest Front Pages</h2>
+            
+            <div class="archives-gallery">
+                <div class="gallery-item">
+                    <a href="newspaper-viet.png" target="_blank" title="Xem Báo To Kinh Đô & Đời Sống">
+                        <img src="newspaper-viet.png" alt="Kinh Đô & Đời Sống - Click để xem ảnh to">
+                    </a>
+                    <div class="click-hint">Click to enlarge</div>
+                </div>
+
+                <div class="gallery-item">
+                    <a href="newspaper-eng.png" target="_blank" title="View The Montreal Heartbreak Gazette Special Report">
+                        <img src="newspaper-eng.png" alt="The Montreal Heartbreak Gazette - Click to view special report">
+                    </a>
+                    <div class="click-hint">Click to enlarge</div>
+                </div>
+            </div>
+            
+            <p><strong>EDITOR'S NOTE:</strong> The above editions have been digitally preserved for historical accuracy. The accused has been strictly forbidden from issuing further public statements regarding the appearance of K-pop idols until the 120-hour sentence has been served in its entirety.</p>
+        </main>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <h2 class="section-title">Trending Topics</h2>
+                <ul>
+                    <li><a href="#">#JusticeForThao</a></li>
+                    <li><a href="#">Survival Guide: 120 Hours of Silence</a></li>
+                    <li><a href="#">Top 10 Things Not To Say to Your Girlfriend</a></li>
+                    <li><a href="#">Montreal Man Discovers Consequences</a></li>
+                </ul>
+            </div>
+            
+            <div class="widget">
+                <h2 class="section-title">Official Statement</h2>
+                <div class="statement-box">
+                    "I am using this time to reflect deeply on my catastrophic lapse in judgment. I accept full responsibility and the accompanying silence." <br><br>
+                    <strong>— Paulo da Silva</strong>
+                </div>
+            </div>
+        </aside>
 
     </div>
+
+    <footer>
+        <p>Copyright © 2026 Doghouse Media Group. All rights reserved.</p>
+        <p>Current Sentence Status: Reflecting deeply.</p>
+    </footer>
 
 </body>
 </html>
