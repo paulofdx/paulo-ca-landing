@@ -3,107 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doghouse Media | The Apology Archives</title>
+    <title>Doghouse Media Group | The Apology Archives</title>
+
     <style>
-        /* --- Base & Typography --- */
+        :root {
+            --ink: #111111;
+            --soft-ink: #333333;
+            --muted: #6b6b6b;
+            --line: #d9d9d9;
+            --paper: #f5f3ef;
+            --white: #ffffff;
+            --red: #9f0000;
+            --deep-red: #760000;
+            --gold: #b08a35;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Georgia', serif;
-            background-color: #f8f9fa;
-            color: #1a1a1a;
             margin: 0;
-            padding: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
             line-height: 1.6;
         }
 
-        /* --- Top Navigation Bar --- */
+        a {
+            color: inherit;
+        }
+
+        /* TOP BAR */
         .top-nav {
-            background-color: #111;
-            color: white;
-            padding: 10px 40px;
+            background: #0c0c0c;
+            color: #ffffff;
+            padding: 14px 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: "Helvetica Neue", Arial, sans-serif;
             text-transform: uppercase;
-            font-size: 0.85em;
-            letter-spacing: 1px;
+            letter-spacing: 1.4px;
+            border-bottom: 1px solid #2b2b2b;
         }
-        .top-nav .logo { font-weight: bold; font-size: 1.2em; }
-        .top-nav .nav-links span { margin-left: 20px; cursor: pointer; color: #aaa; transition: color 0.2s;}
-        .top-nav .nav-links span:hover { color: #fff; }
 
-        /* --- Breaking News Ticker --- */
+        .logo {
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 0.78rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #bcbcbc;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* BREAKING TICKER */
         .breaking-ticker {
-            background-color: #900;
-            color: white;
-            padding: 8px 40px;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.9em;
-            font-weight: bold;
+            background: linear-gradient(90deg, var(--deep-red), var(--red));
+            color: #ffffff;
+            padding: 9px 44px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.86rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
+            gap: 14px;
         }
+
         .ticker-label {
-            background-color: white;
-            color: #900;
-            padding: 2px 8px;
-            margin-right: 15px;
-            border-radius: 3px;
+            background: #ffffff;
+            color: var(--red);
+            padding: 2px 9px;
+            border-radius: 2px;
+            font-weight: 900;
         }
 
-        /* --- Main Page Header --- */
+        /* PAGE HEADER */
         .page-header {
-            text-align: center;
-            padding: 50px 20px 30px;
-            border-bottom: 3px double #111;
-            max-width: 1100px;
-            margin: 0 auto 30px;
-        }
-        .page-header h1 {
-            font-size: 3.5em;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-        .page-header p {
-            font-size: 1.3em;
-            font-style: italic;
-            color: #555;
-            margin: 0;
-        }
-
-        /* --- Content Layout (Grid) --- */
-        .content-wrapper {
-            max-width: 1100px;
+            max-width: 1160px;
             margin: 0 auto;
-            display: flex;
-            gap: 40px;
-            padding: 0 20px;
+            padding: 44px 24px 26px;
+            text-align: center;
+            border-bottom: 4px double var(--ink);
         }
 
-        /* --- Main Column (Thumbnails) --- */
-        .main-column {
-            flex: 3;
-        }
-        .section-title {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+        .dateline {
+            font-family: "Helvetica Neue", Arial, sans-serif;
             text-transform: uppercase;
-            border-bottom: 2px solid #111;
-            padding-bottom: 5px;
-            margin-top: 0;
-            font-size: 1.1em;
-            color: #333;
+            letter-spacing: 2px;
+            color: var(--muted);
+            font-size: 0.76rem;
+            margin-bottom: 14px;
         }
-        
+
+        .page-header h1 {
+            margin: 0;
+            font-size: clamp(2.6rem, 6vw, 5.2rem);
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .page-header p {
+            margin: 18px auto 0;
+            max-width: 830px;
+            font-size: 1.18rem;
+            font-style: italic;
+            color: #4d4d4d;
+        }
+
+        /* LAYOUT */
+        .content-wrapper {
+            max-width: 1160px;
+            margin: 24px auto 0;
+            padding: 0 24px 40px;
+            display: grid;
+            grid-template-columns: minmax(0, 2.5fr) 330px;
+            gap: 38px;
+        }
+
+        .main-column,
+        .sidebar {
+            min-width: 0;
+        }
+
+        .sidebar {
+            border-left: 1px solid var(--line);
+            padding-left: 30px;
+        }
+
+        .section-title {
+            margin: 0 0 18px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.94rem;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            color: var(--soft-ink);
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 8px;
+        }
+
+        /* PRIMARY ARCHIVE SECTION */
+        .archives-panel {
+            background: var(--white);
+            border: 2px solid var(--ink);
+            padding: 26px;
+            margin-bottom: 34px;
+            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.11);
+        }
+
+        .priority-label {
+            display: inline-block;
+            background: var(--red);
+            color: #ffffff;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            padding: 6px 10px;
+            margin-bottom: 14px;
+        }
+
+        .main-objective-title {
+            font-size: 1.15rem;
+            border-bottom: 3px solid #111;
+        }
+
+        .archives-intro {
+            margin: -6px 0 18px;
+            font-size: 1rem;
+            color: #444;
+        }
+
         .archives-gallery {
             display: flex;
-            flex-direction: row; 
+            flex-direction: row;
             justify-content: center;
-            gap: 40px; 
-            padding: 40px 0;
-            background-color: white;
-            border: 1px solid #ddd;
-            margin-bottom: 30px;
+            gap: 48px;
+            padding: 46px 0;
+            background:
+                linear-gradient(#ffffff, #ffffff) padding-box,
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.035) 0,
+                    rgba(0, 0, 0, 0.035) 2px,
+                    transparent 2px,
+                    transparent 7px
+                );
+            border: 2px solid #d4d4d4;
         }
 
         .gallery-item {
@@ -111,151 +210,603 @@
             position: relative;
         }
 
-        /* THE FIX: Forced tiny width remains untouched */
+        /* MAIN THUMBNAILS: SIZE PRESERVED */
         .gallery-item img {
-            width: 115px !important; 
+            width: 115px !important;
             height: auto !important;
             display: block;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            border: 1px solid #bdbdbd;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
             transition: transform 0.2s ease-in-out, box-shadow 0.2s;
             cursor: pointer;
             margin: 0 auto 10px;
+            background: #ffffff;
         }
 
         .gallery-item a:hover img {
-            transform: scale(1.1); 
-            box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-        }
-        
-        .click-hint {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.75em;
-            color: #888;
-            text-transform: uppercase;
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
         }
 
-        /* --- Sidebar Column --- */
-        .sidebar {
-            flex: 1;
-            border-left: 1px solid #ddd;
-            padding-left: 30px;
+        .click-hint {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
         }
-        
+
+        .editor-note {
+            margin: 24px 0 0;
+            padding: 20px 22px;
+            background: #fbfaf7;
+            border-left: 4px solid var(--ink);
+            font-size: 1rem;
+        }
+
+        /* LEAD STORY */
+        .lead-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            padding: 28px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
+        }
+
+        .kicker {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+            color: var(--red);
+            font-weight: 800;
+            font-size: 0.76rem;
+            margin-bottom: 8px;
+        }
+
+        .lead-card h2 {
+            margin: 0;
+            font-size: clamp(1.7rem, 3vw, 2.55rem);
+            line-height: 1.1;
+            letter-spacing: -0.6px;
+        }
+
+        .lead-card .summary {
+            color: #444;
+            font-size: 1.04rem;
+            margin: 14px 0 0;
+        }
+
+        .byline {
+            margin-top: 18px;
+            padding-top: 13px;
+            border-top: 1px solid var(--line);
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* EXTERNAL NEWS SECTION */
+        .press-room {
+            margin-top: 34px;
+        }
+
+        .press-intro {
+            color: #444;
+            margin: -8px 0 20px;
+            font-size: 0.98rem;
+        }
+
+        .source-group {
+            margin-bottom: 28px;
+        }
+
+        .source-group h3 {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin: 0 0 12px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .news-card {
+            display: block;
+            background: var(--white);
+            border: 1px solid var(--line);
+            text-decoration: none;
+            overflow: hidden;
+            transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.10);
+            border-color: #bdbdbd;
+        }
+
+        .news-thumb {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            background: #e9e9e9;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .news-card-body {
+            padding: 14px 15px 16px;
+        }
+
+        .source-tag {
+            display: inline-block;
+            margin-bottom: 6px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .news-card h4 {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.25;
+        }
+
+        .news-card p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.4;
+        }
+
+        .thumbnail-note {
+            margin-top: 14px;
+            color: var(--muted);
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.78rem;
+        }
+
+        /* SIDEBAR */
         .widget {
-            margin-bottom: 40px;
+            margin-bottom: 34px;
         }
-        
+
         .widget ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin: 0;
         }
-        
-        .widget ul li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 1.1em;
+
+        .widget li {
+            padding: 13px 0;
+            border-bottom: 1px solid #e5e2dc;
+            font-size: 1rem;
         }
-        
-        .widget ul li a {
+
+        .widget li a {
             text-decoration: none;
-            color: #1a1a1a;
-            transition: color 0.2s;
         }
-        
-        .widget ul li a:hover { color: #900; }
-        
+
+        .widget li a:hover {
+            color: var(--red);
+        }
+
         .statement-box {
-            background-color: #f1f1f1;
-            padding: 20px;
-            border-left: 4px solid #111;
+            background: #ebe7df;
+            padding: 22px;
+            border-left: 5px solid var(--ink);
             font-style: italic;
         }
 
-        /* --- Footer --- */
+        .statement-box strong {
+            font-style: normal;
+        }
+
+        .sentence-meter {
+            background: var(--white);
+            border: 1px solid var(--line);
+            padding: 18px;
+        }
+
+        .meter-bar {
+            height: 12px;
+            background: #e4e0d8;
+            border: 1px solid #d0cbc1;
+            margin: 12px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            width: 5.8%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+        }
+
+        .meter-label {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .correction-box {
+            border-top: 4px solid var(--ink);
+            background: var(--white);
+            padding: 18px;
+            font-size: 0.95rem;
+        }
+
+        .correction-box strong {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
         footer {
-            background-color: #111;
-            color: #ccc;
+            background: #0c0c0c;
+            color: #cfcfcf;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.85em;
+            padding: 34px 20px;
+            margin-top: 34px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.83rem;
+        }
+
+        footer p {
+            margin: 6px 0;
+        }
+
+        @media (max-width: 900px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid var(--line);
+                padding-top: 28px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-nav {
+                padding: 14px 22px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .breaking-ticker {
+                padding: 10px 22px;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .archives-gallery {
+                gap: 24px;
+            }
+
+            .gallery-item img {
+                width: 115px !important;
+            }
+
+            .lead-card,
+            .archives-panel {
+                padding: 20px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="top-nav">
-        <div class="logo">DOGHOUSE MEDIA GROUP</div>
+    <nav class="top-nav">
+        <div class="logo">Doghouse Media Group</div>
         <div class="nav-links">
-            <span>News</span>
-            <span>Opinion</span>
-            <span>Apologies</span>
-            <span>Subscribe</span>
+            <a href="#archives">Newsroom</a>
+            <a href="#press-room">Outside Press</a>
+            <a href="#statement">Apologies</a>
+            <a href="#status">Sentence Status</a>
         </div>
-    </div>
+    </nav>
 
     <div class="breaking-ticker">
-        <span class="ticker-label">BREAKING</span>
-        Montreal man enters hour 7 of silence mandate; Appeals for leniency denied by Hanoi jurisdiction.
+        <span class="ticker-label">Breaking</span>
+        <span>Montreal man enters hour 7 of silence mandate; appeals for leniency denied by Hanoi jurisdiction.</span>
     </div>
 
     <header class="page-header">
+        <div class="dateline">Montreal • Hanoi • Special Relationship Desk</div>
         <h1>The Apology Archives</h1>
-        <p>Official repository detailing the 120-hour silence sentence (Hanoi Docket #26042026).</p>
+        <p>Official repository detailing the 120-hour silence sentence, issued under Hanoi Docket #26042026.</p>
     </header>
 
     <div class="content-wrapper">
-        
+
         <main class="main-column">
-            <h2 class="section-title">Latest Front Pages</h2>
-            
-            <div class="archives-gallery">
-                <div class="gallery-item">
-                    <a href="viet.html" title="Xem Báo To Kinh Đô & Đời Sống">
-                        <img src="newspaper-viet.png" alt="Kinh Đô & Đời Sống - Click để xem ảnh to">
-                    </a>
-                    <div class="click-hint">Click to read</div>
+
+            <section id="archives" class="archives-panel">
+                <div class="priority-label">Primary Apology Evidence</div>
+
+                <h2 class="section-title main-objective-title">Latest Front Pages</h2>
+
+                <p class="archives-intro">
+                    These two preserved editions are the central records of the case. Click either front page to read the full report.
+                </p>
+
+                <!-- PRESERVED ORIGINAL THUMBNAILS AND LINKS -->
+                <div class="archives-gallery">
+                    <div class="gallery-item">
+                        <a href="viet.html" title="Xem Báo To Kinh Đô & Đời Sống">
+                            <img src="newspaper-viet.png" alt="Kinh Đô & Đời Sống - Click để xem ảnh to">
+                        </a>
+                        <div class="click-hint">Click to read</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="eng.html" title="View The Montreal Heartbreak Gazette Special Report">
+                            <img src="newspaper-eng.png" alt="The Montreal Heartbreak Gazette - Click to view special report">
+                        </a>
+                        <div class="click-hint">Click to read</div>
+                    </div>
                 </div>
 
-                <div class="gallery-item">
-                    <a href="eng.html" title="View The Montreal Heartbreak Gazette Special Report">
-                        <img src="newspaper-eng.png" alt="The Montreal Heartbreak Gazette - Click to view special report">
-                    </a>
-                    <div class="click-hint">Click to read</div>
+                <p class="editor-note">
+                    <strong>EDITOR'S NOTE:</strong>
+                    The above editions have been digitally preserved for historical accuracy. The accused has been
+                    strictly forbidden from issuing further public statements regarding the appearance of K-pop idols
+                    until the 120-hour sentence has been served in its entirety.
+                </p>
+            </section>
+
+            <article class="lead-card">
+                <div class="kicker">Special Report</div>
+                <h2>Man Discovers That Complimenting K-pop Idols Carries Severe Diplomatic Consequences</h2>
+                <p class="summary">
+                    In a developing cross-continental domestic-affairs story, Paulo da Silva remains under reflective silence
+                    after a regrettable lapse in judgment involving an unauthorized celebrity compliment.
+                </p>
+                <div class="byline">
+                    Filed by the Apology Desk • Reviewed by the Department of Romantic Accountability
                 </div>
-            </div>
-            
-            <p><strong>EDITOR'S NOTE:</strong> The above editions have been digitally preserved for historical accuracy. The accused has been strictly forbidden from issuing further public statements regarding the appearance of K-pop idols until the 120-hour sentence has been served in its entirety.</p>
+            </article>
+
+            <section id="press-room" class="press-room">
+                <h2 class="section-title">Outside Press Room</h2>
+                <p class="press-intro">
+                    Live links to authentic news sources in Montreal, Canada, Hanoi, and Vietnam. The thumbnails are
+                    generated from the linked pages so the cards reflect current front-page or section activity.
+                </p>
+
+                <div class="source-group">
+                    <h3>Montreal Desk</h3>
+                    <div class="news-grid">
+
+                        <a class="news-card" href="https://globalnews.ca/montreal/" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://globalnews.ca/montreal/"
+                                 alt="Global News Montreal live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=globalnews.ca';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Montreal</span>
+                                <h4>Global News Montreal</h4>
+                                <p>Local Montreal news, politics, crime, community, weather, and video coverage.</p>
+                            </div>
+                        </a>
+
+                        <a class="news-card" href="https://montrealgazette.com/category/news/local-news/" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://montrealgazette.com/category/news/local-news/"
+                                 alt="Montreal Gazette local news live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=montrealgazette.com';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Montreal</span>
+                                <h4>Montreal Gazette</h4>
+                                <p>Local reporting from one of Montreal’s long-running English-language newsrooms.</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="source-group">
+                    <h3>Canadian Desk</h3>
+                    <div class="news-grid">
+
+                        <a class="news-card" href="https://www.cbc.ca/news/canada" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://www.cbc.ca/news/canada"
+                                 alt="CBC Canada live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=cbc.ca';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Canada</span>
+                                <h4>CBC News Canada</h4>
+                                <p>National Canadian coverage from the public broadcaster’s Canada news section.</p>
+                            </div>
+                        </a>
+
+                        <a class="news-card" href="https://globalnews.ca/canada/" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://globalnews.ca/canada/"
+                                 alt="Global News Canada live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=globalnews.ca';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Canada</span>
+                                <h4>Global News Canada</h4>
+                                <p>Breaking Canadian news, national politics, business, health, and world coverage.</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="source-group">
+                    <h3>Hanoi Desk</h3>
+                    <div class="news-grid">
+
+                        <a class="news-card" href="https://hanoitimes.vn/" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://hanoitimes.vn/"
+                                 alt="The Hanoi Times live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=hanoitimes.vn';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Hanoi</span>
+                                <h4>The Hanoi Times</h4>
+                                <p>Hanoi-focused political, economic, cultural, and urban news coverage.</p>
+                            </div>
+                        </a>
+
+                        <a class="news-card" href="https://hanoitimes.vn/hanoi" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://hanoitimes.vn/hanoi"
+                                 alt="The Hanoi Times Hanoi section live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=hanoitimes.vn';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Hanoi</span>
+                                <h4>Hanoi City News</h4>
+                                <p>Direct link to Hanoi-specific updates, city policy, civic life, and local affairs.</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="source-group">
+                    <h3>Vietnam Desk</h3>
+                    <div class="news-grid">
+
+                        <a class="news-card" href="https://vietnamnews.vn/" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://vietnamnews.vn/"
+                                 alt="Vietnam News live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=vietnamnews.vn';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Vietnam</span>
+                                <h4>Việt Nam News</h4>
+                                <p>English-language coverage of politics, economy, society, culture, travel, and sports.</p>
+                            </div>
+                        </a>
+
+                        <a class="news-card" href="https://en.vietnamplus.vn/topic/latest-news-107.vnp" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://en.vietnamplus.vn/topic/latest-news-107.vnp"
+                                 alt="VietnamPlus latest news live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=en.vietnamplus.vn';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Vietnam</span>
+                                <h4>VietnamPlus Latest News</h4>
+                                <p>Official Vietnam News Agency coverage, updated throughout the day.</p>
+                            </div>
+                        </a>
+
+                        <a class="news-card" href="https://news.tuoitre.vn/vietnam-news.htm" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://news.tuoitre.vn/vietnam-news.htm"
+                                 alt="Tuoi Tre News Vietnam page live thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=news.tuoitre.vn';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Vietnam</span>
+                                <h4>Tuổi Trẻ News</h4>
+                                <p>Vietnam news, society, culture, business, and daily-life reporting in English.</p>
+                            </div>
+                        </a>
+
+                        <a class="news-card" href="https://e.vnexpress.net/" target="_blank" rel="noopener noreferrer">
+                            <img class="news-thumb"
+                                 src="https://image.thum.io/get/width/900/crop/520/noanimate/https://e.vnexpress.net/"
+                                 alt="VnExpress International live page thumbnail"
+                                 onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=128&domain=e.vnexpress.net';">
+                            <div class="news-card-body">
+                                <span class="source-tag">Vietnam</span>
+                                <h4>VnExpress International</h4>
+                                <p>Vietnam and world news from VnExpress’s English-language edition.</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+                <p class="thumbnail-note">
+                    Note: outside thumbnails depend on a third-party screenshot preview service. If a preview is blocked,
+                    the card falls back to the outlet’s site icon while keeping the link active.
+                </p>
+            </section>
+
         </main>
 
         <aside class="sidebar">
+
             <div class="widget">
                 <h2 class="section-title">Trending Topics</h2>
                 <ul>
-                    <li><a href="#">#JusticeForThao</a></li>
-                    <li><a href="#">Survival Guide: 120 Hours of Silence</a></li>
-                    <li><a href="#">Top 10 Things Not To Say to Your Girlfriend</a></li>
-                    <li><a href="#">Montreal Man Discovers Consequences</a></li>
+                    <li><a href="#archives">#JusticeForThao</a></li>
+                    <li><a href="#status">Survival Guide: 120 Hours of Silence</a></li>
+                    <li><a href="#statement">Top 10 Things Not To Say to Your Girlfriend</a></li>
+                    <li><a href="#press-room">Montreal Man Discovers Consequences</a></li>
                 </ul>
             </div>
-            
-            <div class="widget">
+
+            <div id="status" class="widget">
+                <h2 class="section-title">Sentence Status</h2>
+                <div class="sentence-meter">
+                    <div class="meter-label">Hour 7 of 120 served</div>
+                    <div class="meter-bar">
+                        <div class="meter-fill"></div>
+                    </div>
+                    <div class="meter-label">Status: Reflecting deeply</div>
+                </div>
+            </div>
+
+            <div id="statement" class="widget">
                 <h2 class="section-title">Official Statement</h2>
                 <div class="statement-box">
-                    "I am using this time to reflect deeply on my catastrophic lapse in judgment. I accept full responsibility and the accompanying silence." <br><br>
+                    "I am using this time to reflect deeply on my catastrophic lapse in judgment.
+                    I accept full responsibility and the accompanying silence."
+                    <br><br>
                     <strong>— Paulo da Silva</strong>
                 </div>
             </div>
+
+            <div class="widget">
+                <h2 class="section-title">Correction Desk</h2>
+                <div class="correction-box">
+                    <strong>Correction:</strong>
+                    Earlier reports suggested the accused had “no idea what he did wrong.”
+                    The archive now confirms that he knows exactly what he did wrong and is preparing
+                    a full apology package.
+                </div>
+            </div>
+
         </aside>
 
     </div>
 
     <footer>
         <p>Copyright © 2026 Doghouse Media Group. All rights reserved.</p>
-        <p>Current Sentence Status: Reflecting deeply.</p>
+        <p>Current Sentence Status: Reflecting deeply. Leniency review pending.</p>
     </footer>
 
 </body>
