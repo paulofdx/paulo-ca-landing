@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinh Đô & Đời Sống | Bản Tin Tối</title>
+    <style>
+        :root {
+            --ink: #111111;
+            --paper: #f5f3ef;
+            --white: #ffffff;
+            --red: #9f0000;
+            --line: #d8d2c6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+        }
+        .topbar {
+            background: #0c0c0c;
+            color: #fff;
+            padding: 14px 24px;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .topbar a { color: #fff; text-decoration: none; font-weight: 700; }
+        .wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 32px 18px 46px;
+        }
+        header {
+            text-align: center;
+            border-bottom: 4px double var(--ink);
+            margin-bottom: 24px;
+            padding-bottom: 22px;
+        }
+        .dateline {
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            font-size: 0.78rem;
+            margin-bottom: 10px;
+        }
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        .edition-note {
+            margin: 12px auto 0;
+            max-width: 760px;
+            font-style: italic;
+            color: #444;
+        }
+        .newspaper-frame {
+            background: var(--white);
+            border: 2px solid var(--ink);
+            padding: 14px;
+            box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+        }
+        .newspaper-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .actions {
+            margin-top: 24px;
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-size: 0.78rem;
+        }
+        .actions a {
+            color: #fff;
+            background: var(--red);
+            text-decoration: none;
+            padding: 10px 14px;
+            font-weight: 800;
+            border-radius: 2px;
+        }
+        .actions a.secondary { background: #222; }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <a href="index.html">← Back to The Apology Archives</a>
+        <span>Saturday, April 25, 2026 • Montreal 12°C • Hanoi 25°C</span>
+    </div>
+
+    <main class="wrap">
+        <header>
+            <div class="dateline">Bản Tin Tối • Ấn Bản Tiếng Việt • Kết Thúc Ngày 2</div>
+            <h1>Kinh Đô & Đời Sống</h1>
+            <p class="edition-note">Thế giới giải trí nổi bật trong khi câu chuyện Paulo và Thảo tiếp tục ở phần bên lề.</p>
+        </header>
+
+        <section class="newspaper-frame">
+            <img src="newspaper-viet-3.png" alt="Kinh Đô & Đời Sống bản tin tối toàn trang">
+        </section>
+
+        <div class="actions">
+            <a href="index.html" class="secondary">Return to archive</a>
+            <a href="newspaper-viet-3.png" target="_blank" rel="noopener noreferrer">Open image file</a>
+        </div>
+    </main>
+</body>
+</html>
