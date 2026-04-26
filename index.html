@@ -395,6 +395,117 @@
             letter-spacing: 1px;
         }
 
+
+        /* NEWSPAPER-STYLE AD PLACEMENTS */
+        .ad-card {
+            background: #fffaf0;
+            border: 2px solid #1a1a1a;
+            margin: 26px 0 32px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .ad-card.compact {
+            margin: 22px 0 30px;
+        }
+
+        .ad-card.horizontal {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            align-items: stretch;
+        }
+
+        .ad-card.sidebar-ad {
+            margin-top: 0;
+        }
+
+        .ad-image {
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0.045) 0,
+                rgba(0, 0, 0, 0.045) 6px,
+                rgba(255, 255, 255, 0.65) 6px,
+                rgba(255, 255, 255, 0.65) 12px
+            );
+            border-bottom: 1px solid #d8d2c6;
+            width: 100%;
+            height: 180px;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ad-card.compact .ad-image {
+            height: 150px;
+        }
+
+        .ad-card.horizontal .ad-image {
+            width: 190px;
+            height: 100%;
+            min-height: 190px;
+            border-bottom: none;
+            border-right: 1px solid #d8d2c6;
+        }
+
+        .ad-card.sidebar-ad .ad-image {
+            height: 125px;
+        }
+
+        .ad-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .ad-body {
+            padding: 18px 20px 20px;
+        }
+
+        .ad-label {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.66rem;
+            font-weight: 900;
+            letter-spacing: 1.1px;
+            color: #ffffff;
+            background: var(--ink);
+            padding: 3px 7px;
+            text-transform: uppercase;
+        }
+
+        .ad-card h3 {
+            margin: 0 0 8px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.08rem;
+            line-height: 1.15;
+            color: var(--deep-red);
+        }
+
+        .ad-card p {
+            margin: 0;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        .ad-card .price-tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 8px;
+            background: var(--red);
+            color: white;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-weight: 800;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+        }
+
         /* EXTERNAL NEWS SECTION WITHOUT THUMBNAILS */
         .press-room {
             margin-top: 34px;
@@ -532,7 +643,7 @@
         }
 
         .meter-fill {
-            width: 28.6%;
+            width: 43%;
             height: 100%;
             background: linear-gradient(90deg, var(--red), var(--gold));
         }
@@ -590,6 +701,18 @@
                 grid-template-columns: 1fr;
             }
 
+            .ad-card.horizontal {
+                grid-template-columns: 1fr;
+            }
+
+            .ad-card.horizontal .ad-image {
+                width: 100%;
+                height: 160px;
+                min-height: 0;
+                border-right: none;
+                border-bottom: 1px solid #d8d2c6;
+            }
+
             .top-nav {
                 padding: 14px 22px;
                 flex-direction: column;
@@ -636,6 +759,7 @@
         <div class="logo">Doghouse Media Group</div>
         <div class="nav-links">
             <a href="#archives">Newsroom</a>
+            <a href="#ads">Classifieds</a>
             <a href="#press-room">Outside Press</a>
             <a href="#statement">Apologies</a>
             <a href="#status">Sentence Status</a>
@@ -644,13 +768,13 @@
 
     <div class="breaking-ticker">
         <span class="ticker-label">Breaking</span>
-        <span>Saturday, April 25, 2026 • Montreal: 12°C, sunny • Hanoi: 25°C, cloudy • Nightly update: celebrities dominate while Paulo remains in the margins.</span>
+        <span>Sunday, April 26, 2026 • Montreal: 11°C, cloudy • Hanoi: 29°C, partly sunny • Fourth edition: celebrities dominate while Paulo remains near the 72-hour mark of the 168-hour sentence.</span>
     </div>
 
     <header class="page-header">
-        <div class="dateline">Saturday, April 25, 2026 • Montreal 12°C • Hanoi 25°C • Special Relationship Desk</div>
+        <div class="dateline">Sunday, April 26, 2026 • Montreal 11°C • Hanoi 29°C • Special Relationship Desk</div>
         <h1>The Apology Archives</h1>
-        <p>Official repository documenting the end-of-day-two silence sentence, celebrity distractions, and the continuing Montreal-Hanoi apology file.</p>
+        <p>Official repository documenting the fourth-edition silence sentence, celebrity distractions, fake classified ads, and the continuing Montreal-Hanoi apology file.</p>
     </header>
 
     <div class="content-wrapper">
@@ -663,25 +787,43 @@
                 <h2 class="section-title main-objective-title">Latest Front Pages</h2>
 
                 <p class="archives-intro">
-                    The two newest nightly editions appear first, followed by the earlier Day 2 update and original archive records. Click any front page to read the full report.
+                    The fourth edition appears first, with the Vietnamese edition followed by the English edition. Older archive records remain below. Click any front page to read the full report.
                 </p>
 
                 <!-- LATEST EDITIONS FIRST, FOLLOWED BY ORIGINAL ARCHIVES -->
                 <div class="archives-gallery">
                     <div class="gallery-item featured">
-                        <a href="newspaper-viet-3.html" title="Xem ấn bản tiếng Việt bản tin tối mới nhất">
-                            <img src="newspaper-viet-3.png" alt="Kinh Đô & Đời Sống - bản tin tối tiếng Việt ngày 25 tháng 4 năm 2026">
+                        <a href="newspaper-viet-4.html" title="Xem ấn bản tiếng Việt số 4">
+                            <img src="newspaper-viet-4.png" alt="Kinh Đô & Đời Sống - ấn bản tiếng Việt số 4 ngày 26 tháng 4 năm 2026">
                         </a>
                         <div class="edition-label">Vietnamese Edition</div>
-                        <div class="edition-meta">April 25 • Nightly update</div>
+                        <div class="edition-meta">April 26 • 4th edition</div>
                         <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item featured">
-                        <a href="newspaper-eng-3.html" title="View the newest English nightly edition">
-                            <img src="newspaper-eng-3.png" alt="The Montreal Heartbreak Gazette - Nightly News English edition April 25, 2026">
+                        <a href="newspaper-eng-4.html" title="View the English fourth edition">
+                            <img src="newspaper-eng-4.png" alt="The Montreal Heartbreak Gazette - English fourth edition April 26, 2026">
                         </a>
                         <div class="edition-label">English Edition</div>
+                        <div class="edition-meta">April 26 • 4th edition</div>
+                        <div class="click-hint">Click to read</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="newspaper-viet-3.html" title="Xem ấn bản tiếng Việt bản tin tối mới nhất">
+                            <img src="newspaper-viet-3.png" alt="Kinh Đô & Đời Sống - bản tin tối tiếng Việt ngày 25 tháng 4 năm 2026">
+                        </a>
+                        <div class="edition-label">Vietnamese Archive</div>
+                        <div class="edition-meta">April 25 • Nightly update</div>
+                        <div class="click-hint">Click to read</div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <a href="newspaper-eng-3.html" title="View the English nightly edition">
+                            <img src="newspaper-eng-3.png" alt="The Montreal Heartbreak Gazette - Nightly News English edition April 25, 2026">
+                        </a>
+                        <div class="edition-label">English Archive</div>
                         <div class="edition-meta">April 25 • Nightly update</div>
                         <div class="click-hint">Click to read</div>
                     </div>
@@ -755,114 +897,160 @@
 
                 <p class="editor-note">
                     <strong>EDITOR'S NOTE:</strong>
-                    The latest nightly editions record the shift from headline scandal to public sideline. The accused remains
-                    strongly advised to avoid further public commentary about anyone else's appearance, celebrity or otherwise,
-                    until the silence sentence has been served in full.
+                    The fourth edition confirms that Paulo remains a sideline story while celebrities dominate the front page. The original total sentence remains 168 hours; the newest front pages place the case near the 72-hour mark, with roughly 96 hours still to endure.
                 </p>
             </section>
 
+            <aside class="ad-card horizontal" aria-label="Advertisement: Apology Weather Service">
+                <div class="ad-image">
+                    <img src="ad1.png" alt="Advertisement image for Apology Weather Service">
+                </div>
+                <div class="ad-body">
+                    <span class="ad-label">Advertisement</span>
+                    <h3>Apology Weather Service</h3>
+                    <p>Daily emotional forecasts for long-distance couples: cloudy silences, sudden cold fronts, and a 43% chance of being left on read.</p>
+                    <span class="price-tag">Subscribe before the next misunderstanding</span>
+                </div>
+            </aside>
+
+
             <article class="lead-card">
-                <div class="kicker">Special Report</div>
-                <h2>Nightly Update: Celebrities Take Over as Paulo Becomes a Local Footnote</h2>
+                <div class="kicker">Fourth Edition Update</div>
+                <h2>Celebrities Steal the Spotlight While Paulo Keeps Checking WhatsApp</h2>
                 <p class="summary">
-                    By the end of Day 2, global celebrity stories have taken over the front page while Paulo da Silva is reduced to a wandering Montreal sidebar, reportedly muttering names no witness can properly explain.
+                    The latest English and Vietnamese editions show a broader newspaper cycle: global entertainment headlines, mock ads, Hanoi social sightings, and the continuing Montreal report of Paulo trying to write a song before discovering the serious obstacle of not knowing how to sing.
                 </p>
                 <div class="byline">
-                    Filed by the Nightly Desk • Reviewed by the Department of Romantic Accountability
+                    Filed by the Sunday Desk • Reviewed by the Department of Romantic Accountability
                 </div>
             </article>
+
+
+
+
+            <aside class="ad-card" aria-label="Advertisement: The Quiet Table Café">
+                <div class="ad-image">
+                    <img src="ad2.png" alt="Advertisement image for The Quiet Table Café">
+                </div>
+                <div class="ad-body">
+                    <span class="ad-label">Advertisement</span>
+                    <h3>The Quiet Table Café</h3>
+                    <p>Now serving espresso, plausible deniability, and two-person tables for conversations that definitely are not about Paulo.</p>
+                    <span class="price-tag">Hanoi branch now open</span>
+                </div>
+            </aside>
 
             <section id="press-room" class="press-room">
                 <h2 class="section-title">Outside Press Room</h2>
                 <p class="press-intro">
-                    Current outside news links from Montreal, Canada, Hanoi, and Vietnam. Image previews remain removed
-                    because several outside preview services block or restrict thumbnails.
+                    Current outside news links from Montreal, Canada, Hanoi, and Vietnam. Image previews remain removed because several outside preview services block or restrict thumbnails.
                 </p>
 
                 <div class="source-group">
                     <h3>Montreal Desk</h3>
                     <div class="news-grid">
-
-                        <a class="news-card" href="https://www.bicycling.com/culture/a71074035/worlds-2026-montreal-destination/" target="_blank" rel="noopener noreferrer">
+                        <a class="news-card" href="https://www.cbc.ca/news/canada/montreal" target="_blank" rel="noopener noreferrer">
                             <div class="news-card-body">
                                 <span class="source-tag">Montreal</span>
-                                <h4>Montreal positioned as a major 2026 cycling destination</h4>
-                                <p>Bicycling highlights Montreal ahead of the UCI Road World Championships.</p>
-                                <span class="visit-link">Visit article</span>
+                                <h4>CBC Montreal latest local coverage</h4>
+                                <p>Local Montreal headlines, civic updates, culture, transport, weather, and public affairs.</p>
+                                <span class="visit-link">Visit section</span>
                             </div>
                         </a>
 
-                        <a class="news-card" href="https://globalnews.ca/video/11815626/global-news-morning-headlines-friday-april-23-2026" target="_blank" rel="noopener noreferrer">
+                        <a class="news-card" href="https://montrealgazette.com/" target="_blank" rel="noopener noreferrer">
                             <div class="news-card-body">
-                                <span class="source-tag">Montreal / Canada</span>
-                                <h4>Global News Morning headlines for April 24, 2026</h4>
-                                <p>Regional headlines and current Canadian updates from Global News.</p>
-                                <span class="visit-link">Visit article</span>
+                                <span class="source-tag">Montreal</span>
+                                <h4>Montreal Gazette latest headlines</h4>
+                                <p>Regional reporting from Montreal, including city news, opinion, sports, and community coverage.</p>
+                                <span class="visit-link">Visit section</span>
                             </div>
                         </a>
-
                     </div>
                 </div>
+
+
+
+                <aside class="ad-card compact" aria-label="Advertisement: 168-Hour Survival Biscuits">
+                    <div class="ad-image">
+                        <img src="ad3.png" alt="Advertisement image for 168-Hour Survival Biscuits">
+                    </div>
+                    <div class="ad-body">
+                        <span class="ad-label">Advertisement</span>
+                        <h3>168-Hour Survival Biscuits</h3>
+                        <p>For readers waiting through difficult romantic weather. Dry, dependable, and easier to digest than silence.</p>
+                        <span class="price-tag">Approved by no committee</span>
+                    </div>
+                </aside>
 
                 <div class="source-group">
                     <h3>Canadian Desk</h3>
                     <div class="news-grid">
-
-                        <a class="news-card" href="https://globalnews.ca/news/11815564/federal-government-natural-gas-pipeline-expansion/" target="_blank" rel="noopener noreferrer">
+                        <a class="news-card" href="https://www.reuters.com/business/carney-announces-new-canada-trade-committee-review-trade-deal-with-us-nears-2026-04-21/" target="_blank" rel="noopener noreferrer">
                             <div class="news-card-body">
                                 <span class="source-tag">Canada</span>
-                                <h4>Federal government approves $4B natural gas pipeline expansion</h4>
-                                <p>Global News reports on the Sunrise Expansion Program in British Columbia.</p>
+                                <h4>Canada forms new U.S. trade advisory committee</h4>
+                                <p>Reuters reports on preparations ahead of a scheduled North American trade agreement review.</p>
                                 <span class="visit-link">Visit article</span>
                             </div>
                         </a>
 
-                        <a class="news-card" href="https://globalnews.ca/news/11816366/alexandre-boulerice-to-leave-ndp-run-quebec-solidaire/" target="_blank" rel="noopener noreferrer">
+                        <a class="news-card" href="https://www.reuters.com/world/americas/canada-budget-deficit-over-first-11-months-202526-rises-c2555-bln-2026-04-24/" target="_blank" rel="noopener noreferrer">
                             <div class="news-card-body">
                                 <span class="source-tag">Canada</span>
-                                <h4>NDP’s only Quebec MP expected to run for Québec solidaire</h4>
-                                <p>Global News reports on Alexandre Boulerice’s expected move to provincial politics.</p>
+                                <h4>Canada's 2025/26 deficit rises over first eleven months</h4>
+                                <p>Reuters reports federal fiscal figures showing higher expenditure growth than revenue growth.</p>
                                 <span class="visit-link">Visit article</span>
                             </div>
                         </a>
-
                     </div>
                 </div>
 
                 <div class="source-group">
                     <h3>Hanoi Desk</h3>
                     <div class="news-grid">
-
-                        <a class="news-card" href="https://www.reuters.com/world/asia-pacific/hanoi-reviews-petrol-motorbike-ban-opposed-by-honda-ahead-japan-pm-visit-2026-04-23/" target="_blank" rel="noopener noreferrer">
+                        <a class="news-card" href="https://english.hanoi.gov.vn/featured-news/hanoi-party-secretary-urges-progress-on-key-projects-better-living-standards-2655260420182014923.htm" target="_blank" rel="noopener noreferrer">
                             <div class="news-card-body">
                                 <span class="source-tag">Hanoi</span>
-                                <h4>Hanoi reviews petrol motorbike ban proposal</h4>
-                                <p>Reuters reports on a revised pilot plan for petrol motorbike restrictions.</p>
+                                <h4>Hanoi urges progress on key urban projects</h4>
+                                <p>The Hanoi portal reports inspections and timelines for infrastructure and living-standard projects.</p>
                                 <span class="visit-link">Visit article</span>
                             </div>
                         </a>
 
-                        <a class="news-card" href="https://news.tuoitre.vn/hanoi-to-stage-fireworks-at-my-dinh-stadium-next-week-103260425103735669.htm" target="_blank" rel="noopener noreferrer">
+                        <a class="news-card" href="https://english.hanoi.gov.vn/" target="_blank" rel="noopener noreferrer">
                             <div class="news-card-body">
                                 <span class="source-tag">Hanoi</span>
-                                <h4>Hanoi to stage fireworks at My Dinh Stadium</h4>
-                                <p>Tuổi Trẻ News covers the planned display for Reunification Day commemorations.</p>
-                                <span class="visit-link">Visit article</span>
+                                <h4>Hanoi official news portal</h4>
+                                <p>Official English-language updates from Hanoi on city administration, projects, and public notices.</p>
+                                <span class="visit-link">Visit section</span>
                             </div>
                         </a>
-
                     </div>
                 </div>
+
+
+
+                <aside class="ad-card horizontal" aria-label="Advertisement: Montreal Guitar Lessons for Emergencies">
+                    <div class="ad-image">
+                        <img src="ad4.png" alt="Advertisement image for Montreal Guitar Lessons for Emergencies">
+                    </div>
+                    <div class="ad-body">
+                        <span class="ad-label">Advertisement</span>
+                        <h3>Montreal Guitar Lessons for Emergencies</h3>
+                        <p>Bought the guitar first and discovered the singing problem later? Our instructors specialize in crisis chords, apology strumming, and dignified exits.</p>
+                        <span class="price-tag">First sad chord free</span>
+                    </div>
+                </aside>
 
                 <div class="source-group">
                     <h3>Vietnam Desk</h3>
                     <div class="news-grid">
-
-                        <a class="news-card" href="https://www.reuters.com/world/asia-pacific/south-koreas-lee-meets-vietnams-lam-hanoi-2026-04-22/" target="_blank" rel="noopener noreferrer">
+                        <a class="news-card" href="https://www.vietnam.vn/en/su-kien-noi-bat-tuan-tu-20-26-4" target="_blank" rel="noopener noreferrer">
                             <div class="news-card-body">
                                 <span class="source-tag">Vietnam</span>
-                                <h4>South Korea and Vietnam expand nuclear and high-tech cooperation</h4>
-                                <p>Reuters reports on new cooperation documents signed in Hanoi.</p>
+                                <h4>Vietnam highlights of the week: April 20-26</h4>
+                                <p>Vietnam.vn rounds up notable politics, culture, science, technology, tourism, and national events.</p>
                                 <span class="visit-link">Visit article</span>
                             </div>
                         </a>
@@ -871,29 +1059,10 @@
                             <div class="news-card-body">
                                 <span class="source-tag">Vietnam</span>
                                 <h4>Vietnam News latest national coverage</h4>
-                                <p>National headlines covering politics, education, economy, society, and culture.</p>
-                                <span class="visit-link">Visit article</span>
+                                <p>National headlines covering politics, economy, society, culture, environment, and sport.</p>
+                                <span class="visit-link">Visit section</span>
                             </div>
                         </a>
-
-                        <a class="news-card" href="https://news.tuoitre.vn/people-in-hanoi-to-enjoy-free-bus-metro-rides-during-upcoming-holidays-103260424112527436.htm" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Vietnam</span>
-                                <h4>Hanoi residents to get free bus and metro rides</h4>
-                                <p>Tuổi Trẻ News reports on transit access during upcoming holiday periods.</p>
-                                <span class="visit-link">Visit article</span>
-                            </div>
-                        </a>
-
-                        <a class="news-card" href="https://news.tuoitre.vn/vietnamese-french-culinary-fusion-among-highlights-at-4th-banh-mi-festival-10326042510592804.htm" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Vietnam</span>
-                                <h4>Vietnamese-French culinary fusion at the Bánh Mì Festival</h4>
-                                <p>Tuổi Trẻ News reports on French culinary features at the 2026 festival.</p>
-                                <span class="visit-link">Visit article</span>
-                            </div>
-                        </a>
-
                     </div>
                 </div>
             </section>
@@ -912,22 +1081,37 @@
                 </ul>
             </div>
 
+
+
+            <div class="widget">
+                <aside class="ad-card sidebar-ad" aria-label="Advertisement: Reply Radar Weekly">
+                    <div class="ad-image">
+                        <img src="ad5.png" alt="Advertisement image for Reply Radar Weekly">
+                    </div>
+                    <div class="ad-body">
+                        <span class="ad-label">Advertisement</span>
+                        <h3>Reply Radar Weekly</h3>
+                        <p>A calm, completely imaginary dashboard for monitoring hope, battery level, and unread messages.</p>
+                        <span class="price-tag">No guarantee of replies</span>
+                    </div>
+                </aside>
+            </div>
+
             <div id="status" class="widget">
                 <h2 class="section-title">Sentence Status</h2>
                 <div class="sentence-meter">
-                    <div class="meter-label">48 of 168 hours served</div>
+                    <div class="meter-label">Approaching 72 of 168 hours served</div>
                     <div class="meter-bar">
                         <div class="meter-fill"></div>
                     </div>
-                    <div class="meter-label">Status: Incoherent but ambulatory</div>
+                    <div class="meter-label">43% complete • About 96 hours remaining after the 72-hour mark</div>
                 </div>
             </div>
 
             <div id="statement" class="widget">
                 <h2 class="section-title">Official Statement</h2>
                 <div class="statement-box">
-                    "I am using this time to reflect deeply on my catastrophic lapse in judgment.
-                    I accept full responsibility and the accompanying silence."
+                    "I bought the guitar. The guitar did not buy me talent. I remain committed to the apology process."
                     <br><br>
                     <strong>— Paulo da Silva</strong>
                 </div>
@@ -937,8 +1121,7 @@
                 <h2 class="section-title">Correction Desk</h2>
                 <div class="correction-box">
                     <strong>Correction:</strong>
-                    Earlier reports listed the sentence as 120 hours. The archive now confirms the sentence
-                    has been extended to 168 hours after the latest Hanoi ruling.
+                    The sentence total is 168 hours. The fourth edition tracks the case as approaching 72 hours served, not a new extension.
                 </div>
             </div>
 
@@ -948,7 +1131,7 @@
 
     <footer>
         <p>Copyright © 2026 Doghouse Media Group. All rights reserved.</p>
-        <p>Current Sentence Status: Incoherent but ambulatory. Leniency review pending.</p>
+        <p>Current Sentence 43% complete • About 96 hours remaining after the 72-hour mark. Leniency review pending.</p>
     </footer>
 
 </body>
