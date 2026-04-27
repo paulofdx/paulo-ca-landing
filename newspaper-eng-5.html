@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montreal Gazette | 5th Edition</title>
+    <style>
+        :root {
+            --ink: #111111;
+            --paper: #f5f3ef;
+            --white: #ffffff;
+            --red: #9f0000;
+            --navy: #10233f;
+            --line: #d9d9d9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .page-shell {
+            min-height: 100vh;
+            padding: 22px;
+        }
+
+        .reader-bar {
+            max-width: 1180px;
+            margin: 0 auto 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .reader-title {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-size: 0.88rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-button {
+            display: inline-block;
+            background: var(--ink);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-size: 0.76rem;
+            padding: 10px 14px;
+            border-radius: 3px;
+        }
+
+        .nav-button.switch {
+            background: var(--red);
+        }
+
+        .nav-button:hover {
+            filter: brightness(1.08);
+        }
+
+        .newspaper-frame {
+            max-width: 1180px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 1px solid var(--line);
+            padding: 14px;
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
+        }
+
+        .newspaper-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .reader-note {
+            max-width: 1180px;
+            margin: 18px auto 0;
+            padding: 14px 16px;
+            border-left: 5px solid var(--navy);
+            background: #ffffff;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            color: #444;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 700px) {
+            .page-shell {
+                padding: 12px;
+            }
+
+            .reader-bar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .button-group {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .newspaper-frame {
+                padding: 8px;
+            }
+
+            .nav-button {
+                font-size: 0.7rem;
+                padding: 9px 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page-shell">
+        <nav class="reader-bar">
+            <div class="reader-title">Montreal Gazette • English Edition • April 27, 2026</div>
+            <div class="button-group">
+                <a class="nav-button" href="index.html">Back to homepage</a>
+                <a class="nav-button switch" href="newspaper-viet-5.html">READ VIETNAMESE EDITION</a>
+            </div>
+        </nav>
+
+        <section class="newspaper-frame" aria-label="Full English newspaper image for the fifth edition">
+            <img src="newspaper-eng-5.png" alt="Full English fifth edition newspaper page dated April 27, 2026">
+        </section>
+
+        <aside class="reader-note">
+            English fifth edition. The language-switch button opens the Vietnamese version, and the homepage button returns to the full archive.
+        </aside>
+    </main>
+</body>
+</html>
