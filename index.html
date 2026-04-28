@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doghouse Media Group | The Apology Archives</title>
-
     <style>
         :root {
             --ink: #111111;
@@ -30,7 +29,15 @@
             line-height: 1.6;
         }
 
-        a { color: inherit; }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
         .top-nav {
             background: #0c0c0c;
@@ -45,7 +52,10 @@
             border-bottom: 1px solid #2b2b2b;
         }
 
-        .logo { font-weight: 800; font-size: 0.95rem; }
+        .logo {
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
 
         .nav-links {
             display: flex;
@@ -54,11 +64,12 @@
         }
 
         .nav-links a {
-            text-decoration: none;
             color: #bcbcbc;
         }
 
-        .nav-links a:hover { color: #ffffff; }
+        .nav-links a:hover {
+            color: #ffffff;
+        }
 
         .breaking-ticker {
             background: linear-gradient(90deg, var(--navy), var(--deep-red));
@@ -70,6 +81,7 @@
             display: flex;
             align-items: center;
             gap: 14px;
+            flex-wrap: wrap;
         }
 
         .ticker-label {
@@ -123,7 +135,9 @@
         }
 
         .main-column,
-        .sidebar { min-width: 0; }
+        .sidebar {
+            min-width: 0;
+        }
 
         .sidebar {
             border-left: 1px solid var(--line);
@@ -141,12 +155,16 @@
             padding-bottom: 8px;
         }
 
-        .archives-panel {
+        .archives-panel,
+        .lead-card,
+        .widget,
+        .source-watch,
+        .photo-board {
             background: var(--white);
             border: 2px solid var(--ink);
             padding: 26px;
             margin-bottom: 34px;
-            box-shadow: 0 18px 38px rgba(0, 0, 0, 0.11);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
         }
 
         .priority-label {
@@ -162,35 +180,21 @@
             margin-bottom: 14px;
         }
 
-        .main-objective-title {
-            font-size: 1.15rem;
-            border-bottom: 3px solid #111;
-        }
-
-        .archives-intro {
-            margin: -6px 0 18px;
+        .archives-intro,
+        .press-intro {
+            margin: 0 0 18px;
             font-size: 1rem;
             color: #444;
         }
 
         .archives-gallery {
             display: flex;
-            flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: flex-start;
-            gap: 34px;
-            padding: 42px 22px;
-            background:
-                linear-gradient(#ffffff, #ffffff) padding-box,
-                repeating-linear-gradient(
-                    45deg,
-                    rgba(0, 0, 0, 0.035) 0,
-                    rgba(0, 0, 0, 0.035) 2px,
-                    transparent 2px,
-                    transparent 7px
-                );
-            border: 2px solid #d4d4d4;
+            gap: 28px;
+            padding: 28px 20px;
+            background: #fbfaf7;
+            border: 1px solid #d4d4d4;
         }
 
         .gallery-item {
@@ -216,6 +220,21 @@
             z-index: 2;
         }
 
+        .gallery-item img {
+            width: 115px;
+            height: auto;
+            border: 1px solid #bdbdbd;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+            margin: 0 auto 10px;
+            background: #ffffff;
+        }
+
+        .gallery-item a:hover img {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+        }
+
         .edition-label {
             margin-top: 4px;
             font-family: "Helvetica Neue", Arial, sans-serif;
@@ -234,29 +253,23 @@
             line-height: 1.3;
         }
 
-        .gallery-item img {
-            width: 115px !important;
-            height: auto !important;
-            display: block;
-            border: 1px solid #bdbdbd;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s;
-            cursor: pointer;
-            margin: 0 auto 10px;
-            background: #ffffff;
-        }
-
-        .gallery-item a:hover img {
-            transform: translateY(-3px) scale(1.08);
-            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
-        }
-
         .click-hint {
             font-family: "Helvetica Neue", Arial, sans-serif;
             font-size: 0.72rem;
             color: var(--muted);
             text-transform: uppercase;
             letter-spacing: 0.7px;
+        }
+
+        .lead-card h2 {
+            margin: 0 0 12px;
+            font-size: 2rem;
+            line-height: 1.05;
+            text-transform: uppercase;
+        }
+
+        .lead-card p {
+            margin: 0 0 14px;
         }
 
         .dispatch-grid {
@@ -281,7 +294,242 @@
             color: var(--deep-red);
         }
 
-        .dispatch-card p { margin: 0; color: #3f3f3f; font-size: 0.96rem; }
+        .dispatch-card p {
+            margin: 0;
+            color: #3f3f3f;
+            font-size: 0.96rem;
+        }
+
+        .photo-evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .photo-evidence-card {
+            background: #fbfaf7;
+            border: 1px solid var(--line);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-evidence-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 1px solid var(--line);
+            background: #e8e3da;
+        }
+
+        .photo-evidence-body {
+            padding: 18px 20px 20px;
+        }
+
+        .photo-evidence-body h3 {
+            margin: 0 0 8px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            font-size: 0.86rem;
+            color: var(--navy);
+        }
+
+        .photo-evidence-card.paulo-card h3 {
+            color: var(--deep-red);
+        }
+
+        .photo-evidence-body p {
+            margin: 0;
+            font-size: 0.98rem;
+            color: #333333;
+        }
+
+        .ad-card {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 18px;
+            align-items: stretch;
+            border: 1px solid var(--line);
+            background: var(--white);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .ad-card.compact {
+            grid-template-columns: 180px 1fr;
+        }
+
+        .ad-card.horizontal {
+            grid-template-columns: 280px 1fr;
+        }
+
+        .sidebar-ad {
+            grid-template-columns: 1fr;
+        }
+
+        .ad-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 180px;
+            object-fit: cover;
+            background: #efefef;
+        }
+
+        .ad-body {
+            padding: 18px 18px 20px 0;
+        }
+
+        .sidebar-ad .ad-body {
+            padding: 16px 18px 20px;
+        }
+
+        .ad-label {
+            display: inline-block;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 800;
+            color: var(--white);
+            background: var(--deep-red);
+            padding: 4px 8px;
+            margin-bottom: 10px;
+        }
+
+        .ad-body h3 {
+            margin: 0 0 8px;
+            font-size: 1.2rem;
+            line-height: 1.15;
+        }
+
+        .ad-body p {
+            margin: 0 0 10px;
+            color: #444;
+        }
+
+        .price-tag {
+            display: inline-block;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .source-group {
+            margin-bottom: 28px;
+        }
+
+        .source-group h3 {
+            margin: 0 0 12px;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 0.88rem;
+            letter-spacing: 1px;
+            color: var(--navy);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .news-card {
+            border: 1px solid var(--line);
+            background: #fbfaf7;
+            padding: 18px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .source-tag {
+            display: inline-block;
+            background: var(--navy);
+            color: #fff;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            padding: 4px 8px;
+            margin-bottom: 10px;
+        }
+
+        .news-card h4 {
+            margin: 0 0 8px;
+            font-size: 1.02rem;
+            line-height: 1.2;
+        }
+
+        .news-card p {
+            margin: 0 0 10px;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .visit-link {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--deep-red);
+        }
+
+        .widget ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .widget li {
+            margin-bottom: 10px;
+        }
+
+        .sentence-meter {
+            border: 1px solid var(--line);
+            padding: 18px;
+            background: #fbfaf7;
+        }
+
+        .meter-label {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 10px;
+        }
+
+        .meter-bar {
+            width: 100%;
+            height: 16px;
+            background: #ddd;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            width: 55.4%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--navy), var(--deep-red));
+        }
+
+        .statement-box,
+        .correction-box {
+            border: 1px solid var(--line);
+            background: #fbfaf7;
+            padding: 18px;
+        }
 
         .whatsapp-contact-box {
             margin: 24px auto 0;
@@ -304,7 +552,11 @@
             font-size: 0.95rem;
         }
 
-        .whatsapp-text p { margin: 0 0 14px; color: #444; font-size: 0.95rem; }
+        .whatsapp-text p {
+            margin: 0 0 14px;
+            color: #444;
+            font-size: 0.95rem;
+        }
 
         .whatsapp-button {
             display: inline-block;
@@ -320,14 +572,18 @@
             border-radius: 3px;
         }
 
-        .whatsapp-button:hover { background: #1fb85a; }
+        .whatsapp-button:hover {
+            background: #1fb85a;
+        }
 
-        .whatsapp-qr { text-align: center; flex: 0 0 auto; }
+        .whatsapp-qr {
+            text-align: center;
+            flex: 0 0 auto;
+        }
 
         .whatsapp-qr img {
             width: 120px;
             height: 120px;
-            display: block;
             border: 1px solid #cfcfcf;
             background: #ffffff;
             padding: 6px;
@@ -342,390 +598,99 @@
             letter-spacing: 0.7px;
         }
 
-        .editor-note {
-            margin: 24px 0 0;
-            padding: 20px 22px;
-            background: #fbfaf7;
-            border-left: 4px solid var(--ink);
-            font-size: 1rem;
-        }
-
-        .lead-card {
-            background: var(--white);
-            border: 1px solid var(--line);
-            padding: 28px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
-        }
-
-        .kicker {
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1.6px;
-            color: var(--red);
-            font-weight: 800;
-            font-size: 0.76rem;
-            margin-bottom: 8px;
-        }
-
-        .lead-card h2 {
-            margin: 0;
-            font-size: clamp(1.7rem, 3vw, 2.55rem);
-            line-height: 1.1;
-            letter-spacing: -0.6px;
-        }
-
-        .lead-card .summary {
-            color: #444;
-            font-size: 1.04rem;
-            margin: 14px 0 0;
-        }
-
-        .byline {
-            margin-top: 18px;
-            padding-top: 13px;
-            border-top: 1px solid var(--line);
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 0.8rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .ad-card {
-            background: #fffaf0;
-            border: 2px solid #1a1a1a;
-            margin: 26px 0 32px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-        }
-
-        .ad-card.compact { margin: 22px 0 30px; }
-
-        .ad-card.horizontal {
-            display: grid;
-            grid-template-columns: 190px 1fr;
-            align-items: stretch;
-        }
-
-        .ad-card.sidebar-ad { margin-top: 0; }
-
-        .ad-image {
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(0, 0, 0, 0.045) 0,
-                rgba(0, 0, 0, 0.045) 6px,
-                rgba(255, 255, 255, 0.65) 6px,
-                rgba(255, 255, 255, 0.65) 12px
-            );
-            border-bottom: 1px solid #d8d2c6;
-            width: 100%;
-            height: 180px;
-            min-height: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .ad-card.compact .ad-image { height: 150px; }
-
-        .ad-card.horizontal .ad-image {
-            width: 190px;
-            height: 100%;
-            min-height: 190px;
-            border-bottom: none;
-            border-right: 1px solid #d8d2c6;
-        }
-
-        .ad-card.sidebar-ad .ad-image { height: 125px; }
-
-        .ad-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-
-        .ad-body { padding: 18px 20px 20px; }
-
-        .ad-label {
-            display: inline-block;
-            margin-bottom: 8px;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 0.66rem;
-            font-weight: 900;
-            letter-spacing: 1.1px;
-            color: #ffffff;
-            background: var(--ink);
-            padding: 3px 7px;
-            text-transform: uppercase;
-        }
-
-        .ad-card h3 {
-            margin: 0 0 8px;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1.08rem;
-            line-height: 1.15;
-            color: var(--deep-red);
-        }
-
-        .ad-card p { margin: 0; color: #333; font-size: 0.95rem; }
-
-        .ad-card .price-tag {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 4px 8px;
-            background: var(--red);
-            color: white;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-weight: 800;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-        }
-
-        .press-room { margin-top: 34px; }
-
-        .press-intro {
-            color: #444;
-            margin: -8px 0 20px;
-            font-size: 0.98rem;
-        }
-
-        .source-group { margin-bottom: 28px; }
-
-        .source-group h3 {
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 0.82rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--muted);
-            margin: 0 0 12px;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .news-card {
-            display: block;
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-top: 4px solid var(--ink);
-            text-decoration: none;
-            overflow: hidden;
-            transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
-        }
-
-        .news-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.10);
-            border-color: #bdbdbd;
-        }
-
-        .news-card-body { padding: 18px 18px 20px; }
-
-        .source-tag {
-            display: inline-block;
-            margin-bottom: 6px;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--red);
-            font-weight: 800;
-        }
-
-        .news-card h4 {
-            margin: 0;
-            font-size: 1rem;
-            line-height: 1.25;
-        }
-
-        .news-card p {
-            margin: 7px 0 0;
-            color: var(--muted);
-            font-size: 0.86rem;
-            line-height: 1.4;
-        }
-
-        .visit-link {
-            display: inline-block;
-            margin-top: 12px;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 800;
-            color: var(--red);
-        }
-
-        .widget { margin-bottom: 34px; }
-
-        .widget ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .widget li {
-            padding: 13px 0;
-            border-bottom: 1px solid #e5e2dc;
-            font-size: 1rem;
-        }
-
-        .widget li a { text-decoration: none; }
-
-        .widget li a:hover { color: var(--red); }
-
-        .statement-box {
-            background: #ebe7df;
-            padding: 22px;
-            border-left: 5px solid var(--ink);
-            font-style: italic;
-        }
-
-        .statement-box strong { font-style: normal; }
-
-        .sentence-meter {
-            background: var(--white);
-            border: 1px solid var(--line);
-            padding: 18px;
-        }
-
-        .meter-bar {
-            height: 12px;
-            background: #e4e0d8;
-            border: 1px solid #d0cbc1;
-            margin: 12px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .meter-fill {
-            width: 48.8%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--red), var(--gold));
-        }
-
-        .meter-label {
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 0.78rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .correction-box {
-            border-top: 4px solid var(--ink);
-            background: var(--white);
-            padding: 18px;
-            font-size: 0.95rem;
-        }
-
-        .correction-box strong {
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            text-transform: uppercase;
-            font-size: 0.78rem;
-            letter-spacing: 1px;
-        }
-
         footer {
-            background: #0c0c0c;
-            color: #cfcfcf;
-            text-align: center;
-            padding: 34px 20px;
-            margin-top: 34px;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            font-size: 0.83rem;
+            max-width: 1160px;
+            margin: 0 auto 40px;
+            padding: 20px 24px 0;
+            border-top: 1px solid var(--line);
+            color: #555;
+            font-size: 0.94rem;
         }
 
-        footer p { margin: 6px 0; }
-
-        @media (max-width: 900px) {
-            .content-wrapper { grid-template-columns: 1fr; }
+        @media (max-width: 1000px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
 
             .sidebar {
                 border-left: none;
                 padding-left: 0;
-                border-top: 1px solid var(--line);
-                padding-top: 28px;
             }
 
             .news-grid,
-            .dispatch-grid { grid-template-columns: 1fr; }
-
-            .ad-card.horizontal { grid-template-columns: 1fr; }
-
-            .ad-card.horizontal .ad-image {
-                width: 100%;
-                height: 160px;
-                min-height: 0;
-                border-right: none;
-                border-bottom: 1px solid #d8d2c6;
+            .dispatch-grid,
+            .photo-evidence-grid {
+                grid-template-columns: 1fr;
             }
 
-            .top-nav {
-                padding: 14px 22px;
-                flex-direction: column;
-                gap: 10px;
+            .ad-card,
+            .ad-card.compact,
+            .ad-card.horizontal {
+                grid-template-columns: 1fr;
             }
 
-            .nav-links {
-                gap: 14px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .breaking-ticker {
-                padding: 10px 22px;
-                align-items: flex-start;
+            .ad-body {
+                padding: 18px;
             }
         }
 
-        @media (max-width: 540px) {
-            .archives-gallery { gap: 24px; }
+        @media (max-width: 720px) {
+            .top-nav,
+            .breaking-ticker {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
 
-            .gallery-item img { width: 115px !important; }
+            .page-header {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
 
-            .lead-card,
-            .archives-panel { padding: 20px; }
+            .content-wrapper {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
 
             .whatsapp-contact-box {
                 flex-direction: column;
                 text-align: center;
             }
+
+            .nav-links {
+                display: none;
+            }
+
+            .archives-gallery {
+                gap: 20px;
+            }
+
+            .gallery-item {
+                max-width: 120px;
+            }
         }
     </style>
 </head>
-
 <body>
 
-    <nav class="top-nav">
+    <div class="top-nav">
         <div class="logo">Doghouse Media Group</div>
         <div class="nav-links">
-            <a href="#archives">Newsroom</a>
-            <a href="#ads">Classifieds</a>
-            <a href="#press-room">Outside Press</a>
-            <a href="#statement">Statements</a>
-            <a href="#status">Sentence Status</a>
+            <a href="#archives">Editions</a>
+            <a href="#photo-board">Photo Board</a>
+            <a href="#press-room">Dispatches</a>
+            <a href="#source-watch">News Watch</a>
         </div>
-    </nav>
+    </div>
 
     <div class="breaking-ticker">
         <span class="ticker-label">Breaking</span>
-        <span>Monday, April 27, 2026 • Montreal: 10°C, cloudy • Hanoi: 28°C, cloudy • Fifth edition: Thảo spotted in Hanoi while Paulo enters advanced social-media surveillance mode.</span>
+        <span>Tuesday, April 28, 2026 • Montreal: 19°C, clear • Hanoi: 26°C, mostly cloudy • Sixth edition: Robert the bear becomes Hanoi’s newest romantic threat while Paulo tries gym redemption and salad diplomacy.</span>
     </div>
 
     <header class="page-header">
-        <div class="dateline">Monday, April 27, 2026 • Montreal 10°C • Hanoi 28°C • Special Relationship Desk</div>
+        <div class="dateline">Doghouse Media Group • Special Coverage Archive • Sixth Edition Added</div>
         <h1>The Apology Archives</h1>
-        <p>Official repository documenting the fifth-edition socialite sighting, the Michael speculation file, and Paulo’s latest couch-based collapse in Montreal.</p>
+        <p>A rolling collection of mock newspaper coverage documenting Thảo, Paulo, Robert the bear, and the long march toward possible forgiveness.</p>
     </header>
 
     <div class="content-wrapper">
@@ -733,247 +698,296 @@
         <main class="main-column">
 
             <section id="archives" class="archives-panel">
-                <div class="priority-label">Primary Apology Evidence</div>
-
-                <h2 class="section-title main-objective-title">Latest Front Pages</h2>
-
-                <p class="archives-intro">
-                    The fifth edition appears first, with the Vietnamese edition followed by the English edition. Older archive records remain below. Click any front page to read the full report.
-                </p>
+                <span class="priority-label">Front Page Archive</span>
+                <h2 class="section-title">Edition Gallery</h2>
+                <p class="archives-intro">Click any front page to open the full newspaper image page. The newest sixth-edition front pages appear first.</p>
 
                 <div class="archives-gallery">
                     <div class="gallery-item featured">
-                        <a href="newspaper-viet-5.html" title="Xem ấn bản tiếng Việt số 5">
-                            <img src="newspaper-viet-5.png" alt="Hà Nội Mới - ấn bản tiếng Việt số 5 ngày 27 tháng 4 năm 2026">
+                        <a href="newspaper-viet-6.html">
+                            <img src="newspaper-viet-6.png" alt="Hà Nội Mới - ấn bản tiếng Việt số 6 ngày 28 tháng 4 năm 2026">
+                            <div class="edition-label">Vietnamese 6th Edition</div>
+                            <div class="edition-meta">April 28, 2026</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">Vietnamese Edition</div>
-                        <div class="edition-meta">April 27 • 5th edition</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item featured">
-                        <a href="newspaper-eng-5.html" title="View the English fifth edition">
-                            <img src="newspaper-eng-5.png" alt="Montreal Gazette - English fifth edition April 27, 2026">
+                        <a href="newspaper-eng-6.html">
+                            <img src="newspaper-eng-6.png" alt="Montreal Gazette - English sixth edition April 28, 2026">
+                            <div class="edition-label">English 6th Edition</div>
+                            <div class="edition-meta">April 28, 2026</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">English Edition</div>
-                        <div class="edition-meta">April 27 • 5th edition</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="newspaper-viet-4.html" title="Xem ấn bản tiếng Việt số 4">
-                            <img src="newspaper-viet-4.png" alt="Kinh Đô & Đời Sống - ấn bản tiếng Việt số 4 ngày 26 tháng 4 năm 2026">
+                        <a href="newspaper-viet-5.html">
+                            <img src="newspaper-viet-5.png" alt="Vietnamese fifth edition">
+                            <div class="edition-label">Vietnamese 5th Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">Vietnamese Archive</div>
-                        <div class="edition-meta">April 26 • 4th edition</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="newspaper-eng-4.html" title="View the English fourth edition">
-                            <img src="newspaper-eng-4.png" alt="The Montreal Heartbreak Gazette - English fourth edition April 26, 2026">
+                        <a href="newspaper-eng-5.html">
+                            <img src="newspaper-eng-5.png" alt="English fifth edition">
+                            <div class="edition-label">English 5th Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">English Archive</div>
-                        <div class="edition-meta">April 26 • 4th edition</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="newspaper-viet-3.html" title="Xem ấn bản tiếng Việt bản tin tối">
-                            <img src="newspaper-viet-3.png" alt="Kinh Đô & Đời Sống - bản tin tối tiếng Việt ngày 25 tháng 4 năm 2026">
+                        <a href="newspaper-viet-4.html">
+                            <img src="newspaper-viet-4.png" alt="Vietnamese fourth edition">
+                            <div class="edition-label">Vietnamese 4th Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">Vietnamese Archive</div>
-                        <div class="edition-meta">April 25 • Nightly update</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="newspaper-eng-3.html" title="View the English nightly edition">
-                            <img src="newspaper-eng-3.png" alt="The Montreal Heartbreak Gazette - Nightly News English edition April 25, 2026">
+                        <a href="newspaper-eng-4.html">
+                            <img src="newspaper-eng-4.png" alt="English fourth edition">
+                            <div class="edition-label">English 4th Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">English Archive</div>
-                        <div class="edition-meta">April 25 • Nightly update</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="viet-2.html" title="Xem ấn bản tiếng Việt trước đó">
-                            <img src="newspaper-viet-2.png" alt="Kinh Đô & Đời Sống - ấn bản tiếng Việt trước đó">
+                        <a href="newspaper-viet-3.html">
+                            <img src="newspaper-viet-3.png" alt="Vietnamese third edition">
+                            <div class="edition-label">Vietnamese 3rd Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">Vietnamese Archive</div>
-                        <div class="edition-meta">April 25 • 168-hour update</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="eng-2.html" title="View the previous English edition">
-                            <img src="newspaper-eng-2.png" alt="The Montreal Heartbreak Gazette - previous English edition">
+                        <a href="newspaper-eng-3.html">
+                            <img src="newspaper-eng-3.png" alt="English third edition">
+                            <div class="edition-label">English 3rd Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">English Archive</div>
-                        <div class="edition-meta">April 25 • 168-hour update</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="viet.html" title="Xem ấn bản tiếng Việt ban đầu">
-                            <img src="newspaper-viet.png" alt="Kinh Đô & Đời Sống - original Vietnamese edition">
+                        <a href="newspaper-viet-2.html">
+                            <img src="newspaper-viet-2.png" alt="Vietnamese second edition">
+                            <div class="edition-label">Vietnamese 2nd Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">Vietnamese Archive</div>
-                        <div class="edition-meta">Original 120-hour file</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
 
                     <div class="gallery-item">
-                        <a href="eng.html" title="View the original English edition">
-                            <img src="newspaper-eng.png" alt="The Montreal Heartbreak Gazette - original English edition">
+                        <a href="newspaper-eng-2.html">
+                            <img src="newspaper-eng-2.png" alt="English second edition">
+                            <div class="edition-label">English 2nd Edition</div>
+                            <div class="edition-meta">Earlier edition</div>
+                            <div class="click-hint">Open edition</div>
                         </a>
-                        <div class="edition-label">English Archive</div>
-                        <div class="edition-meta">Original 120-hour file</div>
-                        <div class="click-hint">Click to read</div>
                     </div>
-                </div>
 
-                <div class="dispatch-grid">
-                    <div class="dispatch-card">
-                        <h3>Montreal Desk</h3>
-                        <p>Paulo has reportedly moved from ordinary sadness into structured phone-staring, couch-moping, and repeated checks of Thảo’s social media pages.</p>
+                    <div class="gallery-item">
+                        <a href="newspaper-viet.html">
+                            <img src="newspaper-viet.png" alt="Original Vietnamese edition">
+                            <div class="edition-label">Original Vietnamese</div>
+                            <div class="edition-meta">First edition</div>
+                            <div class="click-hint">Open edition</div>
+                        </a>
                     </div>
-                    <div class="dispatch-card">
-                        <h3>Hanoi Desk</h3>
-                        <p>Thảo appears publicly composed, stylish, and socially active, while the unidentified Western man known only as “Michael” becomes the most discussed student in the entire file.</p>
+
+                    <div class="gallery-item">
+                        <a href="newspaper-eng.html">
+                            <img src="newspaper-eng.png" alt="Original English edition">
+                            <div class="edition-label">Original English</div>
+                            <div class="edition-meta">First edition</div>
+                            <div class="click-hint">Open edition</div>
+                        </a>
                     </div>
                 </div>
 
                 <div class="whatsapp-contact-box">
                     <div class="whatsapp-text">
-                        <h3>Direct Apology Hotline</h3>
-                        <p>
-                            For urgent apology reviews, sentence reductions, or forgiveness-related inquiries,
-                            contact Paulo directly on WhatsApp.
-                        </p>
-
-                        <a class="whatsapp-button"
-                           href="https://wa.me/15149443761"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            Message Paulo on WhatsApp
-                        </a>
+                        <h3>Editorial Contact</h3>
+                        <p>Questions, corrections, dramatic updates, or breaking bear-related developments can be submitted directly.</p>
+                        <a class="whatsapp-button" href="https://wa.me/" target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
                     </div>
-
                     <div class="whatsapp-qr">
-                        <a href="https://wa.me/15149443761"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           title="Open WhatsApp chat with Paulo">
-                            <img
-                                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fwa.me%2F15149443761"
-                                alt="WhatsApp QR code for Paulo">
-                        </a>
-                        <div class="qr-caption">Scan to open WhatsApp</div>
+                        <img src="whatsapp-qr.png" alt="WhatsApp QR code">
+                        <div class="qr-caption">Scan to contact</div>
                     </div>
                 </div>
-
-                <p class="editor-note">
-                    <strong>EDITOR'S NOTE:</strong>
-                    The fifth edition advances the storyline from general heartbreak to full social-media reconnaissance. The total sentence remains 168 hours. This edition tracks the punishment at 82 hours served, with 86 hours remaining.
-                </p>
             </section>
 
-            <aside id="ads" class="ad-card horizontal" aria-label="Advertisement: Social Media Binoculars">
-                <div class="ad-image">
-                    <img src="ad1.png" alt="Advertisement image for Social Media Binoculars">
-                </div>
-                <div class="ad-body">
-                    <span class="ad-label">Advertisement</span>
-                    <h3>Social Media Binoculars</h3>
-                    <p>For the modern romantic analyst who needs to zoom in emotionally without actually understanding what is happening.</p>
-                    <span class="price-tag">Includes panic strap</span>
-                </div>
-            </aside>
-
             <article class="lead-card">
-                <div class="kicker">Fifth Edition Update</div>
-                <h2>Thảo Seen Living Her Best Life as Paulo Enters the Couch Investigation Phase</h2>
-                <p class="summary">
-                    Reports from Hanoi place Thảo confidently out on the town, seen near luxury nightlife and shopping scenes while speculation grows around an unidentified Western man. In Montreal, Paulo is said to be devastated, staring at his phone, refreshing social feeds, and trying to determine whether “Michael” is a person, a rumor, or a new chapter in emotional damage.
-                </p>
-                <div class="byline">
-                    Filed by the Monday Desk • Reviewed by the Department of Preventable Comments
+                <span class="priority-label">Sixth Edition Update</span>
+                <h2>Day 5 of the punishment: Robert enters the story</h2>
+                <p>Thảo has reportedly been seen around Hanoi with a new furry friend named Robert. Witnesses claim Paulo introduced him, but insist nobody expected the bear to become this socially effective.</p>
+                <p>The pair have reportedly gone clubbing, shopping, shared a Boston milkshake, and ended the evening on a moonlit lakeside bench. Meanwhile, Paulo has been photographed in a grimy gym and later at a salad bar, trying to rebuild both discipline and romantic leverage.</p>
+
+                <div class="dispatch-grid">
+                    <div class="dispatch-card">
+                        <h3>Thảo’s Day</h3>
+                        <p>Clubbing, shopping, milkshakes, lake views, and apparently zero shortage of cheerful company.</p>
+                    </div>
+                    <div class="dispatch-card">
+                        <h3>Paulo’s Strategy</h3>
+                        <p>Weights, sweat, salad, and a visible commitment to self-improvement under emotionally difficult conditions.</p>
+                    </div>
                 </div>
             </article>
 
-            <aside class="ad-card" aria-label="Advertisement: The Emergency Ego Repair Clinic">
-                <div class="ad-image">
-                    <img src="ad2.png" alt="Advertisement image for The Emergency Ego Repair Clinic">
-                </div>
-                <div class="ad-body">
-                    <span class="ad-label">Advertisement</span>
-                    <h3>The Emergency Ego Repair Clinic</h3>
-                    <p>Bruised by one photograph and three dots on a messaging app? Our specialists offer same-day imaginary confidence restoration.</p>
-                    <span class="price-tag">Walk-ins discouraged but expected</span>
-                </div>
-            </aside>
+            <section id="photo-board" class="photo-board">
+                <h2 class="section-title">Sixth Edition Photo Evidence Board</h2>
+                <p class="press-intro">This section loads the six individual story photos automatically, as long as they are uploaded into the same GitHub folder with the exact filenames shown here.</p>
 
-            <section id="press-room" class="press-room">
-                <h2 class="section-title">External News Desk</h2>
-                <p class="press-intro">
-                    Real outside news links from Montreal, Canada, Hanoi, and Vietnam. Image previews remain removed because several outside preview services block or restrict thumbnails.
-                </p>
+                <div class="photo-evidence-grid">
+                    <article class="photo-evidence-card">
+                        <img src="photo1-club.png" alt="Thảo and Robert dancing late into the night at the club">
+                        <div class="photo-evidence-body">
+                            <h3>Photo 1: Club Sighting</h3>
+                            <p>Thảo and Robert were seen dancing late into the night, with witnesses reporting dangerous levels of confidence, music, and bear-based charisma.</p>
+                        </div>
+                    </article>
+
+                    <article class="photo-evidence-card">
+                        <img src="photo2-shopping.png" alt="Thảo trying on a new dress while Robert waits with cash ready">
+                        <div class="photo-evidence-body">
+                            <h3>Photo 2: Shopping Spree</h3>
+                            <p>Robert reportedly waited outside the changing room with cash ready, proving that “expensive but worth it” can become a full financial policy.</p>
+                        </div>
+                    </article>
+
+                    <article class="photo-evidence-card">
+                        <img src="photo3-milkshake.png" alt="Thảo and Robert romantically sharing a Boston milkshake with two straws">
+                        <div class="photo-evidence-body">
+                            <h3>Photo 3: Boston Milkshake</h3>
+                            <p>The pair shared one milkshake with two straws, raising the romance alert from mild concern to full dairy-based investigation.</p>
+                        </div>
+                    </article>
+
+                    <article class="photo-evidence-card">
+                        <img src="photo4-lake.png" alt="Thảo and Robert sitting together on a bench by the moonlit lake">
+                        <div class="photo-evidence-body">
+                            <h3>Photo 4: Moonlit Lake</h3>
+                            <p>The evening allegedly ended on a bench overlooking the water, with Robert’s head covered in lipstick marks and Paulo’s chances temporarily under review.</p>
+                        </div>
+                    </article>
+
+                    <article class="photo-evidence-card paulo-card">
+                        <img src="photo5-gym.png" alt="Paulo struggling with weights at a grimy gym">
+                        <div class="photo-evidence-body">
+                            <h3>Photo 5: Gym Redemption</h3>
+                            <p>Paulo was photographed struggling with weights beneath a motivational poster, trying to convert emotional panic into measurable bicep activity.</p>
+                        </div>
+                    </article>
+
+                    <article class="photo-evidence-card paulo-card">
+                        <img src="photo6-salad.png" alt="Paulo eating salad reluctantly at a salad bar">
+                        <div class="photo-evidence-body">
+                            <h3>Photo 6: Salad Diplomacy</h3>
+                            <p>Paulo was later spotted eating salad with visible reluctance, telling no one in particular that it was “not good, but worth it.”</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="press-room">
+                <h2 class="section-title">Story Ads</h2>
+
+                <aside class="ad-card" aria-label="Advertisement: Robert-Approved Wallet Stretchers">
+                    <div class="ad-image">
+                        <img src="ad1.png" alt="Advertisement image for Robert-Approved Wallet Stretchers">
+                    </div>
+                    <div class="ad-body">
+                        <span class="ad-label">Advertisement</span>
+                        <h3>Robert-Approved Wallet Stretchers</h3>
+                        <p>For premium spending events, emergency shopping approval, and moments when “expensive but worth it” becomes a lifestyle.</p>
+                        <span class="price-tag">Luxury expansion device</span>
+                    </div>
+                </aside>
+
+                <aside class="ad-card compact" aria-label="Advertisement: Boston Milkshake Romance Siren">
+                    <div class="ad-image">
+                        <img src="ad2.png" alt="Advertisement image for Boston Milkshake Romance Siren">
+                    </div>
+                    <div class="ad-body">
+                        <span class="ad-label">Advertisement</span>
+                        <h3>Boston Milkshake Romance Siren</h3>
+                        <p>Two straws. One emotional crisis. Sounds automatically whenever eye contact becomes too romantic for public comfort.</p>
+                        <span class="price-tag">Alert level: dairy</span>
+                    </div>
+                </aside>
+
+                <aside class="ad-card compact" aria-label="Advertisement: Sad Salad Performance Enhancer">
+                    <div class="ad-image">
+                        <img src="ad3.png" alt="Advertisement image for Sad Salad Performance Enhancer">
+                    </div>
+                    <div class="ad-body">
+                        <span class="ad-label">Advertisement</span>
+                        <h3>Sad Salad Performance Enhancer</h3>
+                        <p>Turns one forkful of lettuce into a heroic public act. Recommended for men trying to look disciplined while deeply missing fried food.</p>
+                        <span class="price-tag">Lettuce-based hope</span>
+                    </div>
+                </aside>
+
+                <aside class="ad-card horizontal" aria-label="Advertisement: Grimy Gym Redemption Plan">
+                    <div class="ad-image">
+                        <img src="ad4.png" alt="Advertisement image for Grimy Gym Redemption Plan">
+                    </div>
+                    <div class="ad-body">
+                        <span class="ad-label">Advertisement</span>
+                        <h3>Grimy Gym Redemption Plan</h3>
+                        <p>Lose the belly, win the headline, possibly win her back. Includes motivational wall poster and one emergency towel for visible regret.</p>
+                        <span class="price-tag">Sweat not included</span>
+                    </div>
+                </aside>
+            </section>
+
+            <section id="source-watch" class="source-watch">
+                <h2 class="section-title">External News Watch</h2>
+                <p class="press-intro">A curated row of real-world links for Montreal, Canada, Hanoi, and Vietnam.</p>
 
                 <div class="source-group">
                     <h3>Montreal Desk</h3>
                     <div class="news-grid">
-                        <a class="news-card" href="https://www.cbc.ca/news/canada/montreal" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Montreal</span>
-                                <h4>CBC Montreal latest local coverage</h4>
-                                <p>Local Montreal reporting, civic updates, weather, transport, culture, and public affairs.</p>
-                                <span class="visit-link">Visit section</span>
-                            </div>
+                        <a class="news-card" href="https://montreal.citynews.ca/2026/04/27/woman-hospitalized-fire-homeless-encampment-saint-henri/" target="_blank" rel="noopener noreferrer">
+                            <span class="source-tag">Montreal</span>
+                            <h4>Woman hospitalized after fire at Saint-Henri encampment</h4>
+                            <p>CityNews Montreal reported a woman was hospitalized following a fire at a homeless encampment in Saint-Henri.</p>
+                            <span class="visit-link">Visit article</span>
                         </a>
 
-                        <a class="news-card" href="https://montrealgazette.com/" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Montreal</span>
-                                <h4>Montreal Gazette latest headlines</h4>
-                                <p>Regional coverage from Montreal, including city news, opinion, sports, and community reporting.</p>
-                                <span class="visit-link">Visit section</span>
-                            </div>
+                        <a class="news-card" href="https://montreal.citynews.ca/2026/04/27/partial-closure-viger-west-st-urbain-may-18/" target="_blank" rel="noopener noreferrer">
+                            <span class="source-tag">Montreal</span>
+                            <h4>Partial closures on Viger West and St-Urbain until May 18</h4>
+                            <p>Downtown Montreal drivers face disruption as Ville-Marie and Viger tunnel work closes lanes into May.</p>
+                            <span class="visit-link">Visit article</span>
                         </a>
                     </div>
                 </div>
 
-                <aside class="ad-card compact" aria-label="Advertisement: Mystery Michael Detector">
-                    <div class="ad-image">
-                        <img src="ad3.png" alt="Advertisement image for Mystery Michael Detector">
-                    </div>
-                    <div class="ad-body">
-                        <span class="ad-label">Advertisement</span>
-                        <h3>Mystery Michael Detector</h3>
-                        <p>A scientifically unserious device that beeps whenever a Western man appears within 30 metres of a dramatic misunderstanding.</p>
-                        <span class="price-tag">Batteries and certainty not included</span>
-                    </div>
-                </aside>
-
                 <div class="source-group">
                     <h3>Canadian Desk</h3>
                     <div class="news-grid">
-                        <a class="news-card" href="https://www.reuters.com/world/canada/" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Canada</span>
-                                <h4>Reuters Canada latest coverage</h4>
-                                <p>National Canadian headlines, including politics, trade, business, and economic policy updates.</p>
-                                <span class="visit-link">Visit section</span>
-                            </div>
+                        <a class="news-card" href="https://www.reuters.com/business/canada-set-up-sovereign-wealth-fund-with-initial-funding-c25-billion-2026-04-27/" target="_blank" rel="noopener noreferrer">
+                            <span class="source-tag">Canada</span>
+                            <h4>Canada announces C$25B Canada Strong Fund</h4>
+                            <p>Reuters reported Ottawa’s plan for a government-owned investment fund intended to support major domestic projects.</p>
+                            <span class="visit-link">Visit article</span>
                         </a>
 
-                        <a class="news-card" href="https://www.reuters.com/world/americas/canada-budget-deficit-over-first-11-months-202526-rises-c2555-bln-2026-04-24/" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Canada</span>
-                                <h4>Canada deficit rises over first eleven months of 2025/26</h4>
-                                <p>Reuters reports federal fiscal figures showing a deficit of C$25.55 billion over the first eleven months.</p>
-                                <span class="visit-link">Visit article</span>
-                            </div>
+                        <a class="news-card" href="https://www.reuters.com/world/americas/bank-canada-set-hold-rates-225-oil-shock-likely-short-lived-2026-04-27/" target="_blank" rel="noopener noreferrer">
+                            <span class="source-tag">Canada</span>
+                            <h4>Bank of Canada expected to hold rates at 2.25%</h4>
+                            <p>Reuters reported economists expected the central bank to hold rates as oil-related inflation pressure appeared short-lived.</p>
+                            <span class="visit-link">Visit article</span>
                         </a>
                     </div>
                 </div>
@@ -982,61 +996,40 @@
                     <h3>Hanoi Desk</h3>
                     <div class="news-grid">
                         <a class="news-card" href="https://english.hanoi.gov.vn/" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Hanoi</span>
-                                <h4>Hanoi official news portal</h4>
-                                <p>Official English-language updates from Hanoi on city administration, public projects, and local notices.</p>
-                                <span class="visit-link">Visit section</span>
-                            </div>
+                            <span class="source-tag">Hanoi</span>
+                            <h4>Hanoi official news portal</h4>
+                            <p>Official English-language updates from Hanoi on city administration, public projects, and local notices.</p>
+                            <span class="visit-link">Visit section</span>
                         </a>
 
-                        <a class="news-card" href="https://vietnamnews.vn/" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Hanoi</span>
-                                <h4>Investors warned over delayed land projects in Hà Nội</h4>
-                                <p>Vietnam News reports that Hà Nội has warned investors in delayed land-use projects to prove capacity and timelines.</p>
-                                <span class="visit-link">Visit section</span>
-                            </div>
+                        <a class="news-card" href="https://www.reuters.com/world/asia-pacific/hanoi-reviews-petrol-motorbike-ban-opposed-by-honda-ahead-japan-pm-visit-2026-04-23/" target="_blank" rel="noopener noreferrer">
+                            <span class="source-tag">Hanoi</span>
+                            <h4>Hanoi reviews petrol motorbike ban</h4>
+                            <p>Reuters reported Hanoi was reconsidering a city-centre petrol motorbike ban amid Japanese business concerns.</p>
+                            <span class="visit-link">Visit article</span>
                         </a>
                     </div>
                 </div>
-
-                <aside class="ad-card horizontal" aria-label="Advertisement: Luxury Silence Insurance">
-                    <div class="ad-image">
-                        <img src="ad4.png" alt="Advertisement image for Luxury Silence Insurance">
-                    </div>
-                    <div class="ad-body">
-                        <span class="ad-label">Advertisement</span>
-                        <h3>Luxury Silence Insurance</h3>
-                        <p>Premium coverage for accidental celebrity comments, suspicious screenshots, and emotional losses caused by red dresses near expensive cars.</p>
-                        <span class="price-tag">Claims processed after 168 hours</span>
-                    </div>
-                </aside>
 
                 <div class="source-group">
                     <h3>Vietnam Desk</h3>
                     <div class="news-grid">
-                        <a class="news-card" href="https://www.reuters.com/world/asia-pacific/south-koreas-lee-meets-vietnams-lam-hanoi-2026-04-22/" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Vietnam</span>
-                                <h4>Vietnam and South Korea boost energy and high-tech cooperation</h4>
-                                <p>Reuters reports new cooperation documents covering nuclear energy, technology, security, semiconductors, and AI.</p>
-                                <span class="visit-link">Visit article</span>
-                            </div>
+                        <a class="news-card" href="https://www.reuters.com/world/asia-pacific/south-korea-vietnam-set-sign-dozens-business-deals-lee-visits-hanoi-2026-04-23/" target="_blank" rel="noopener noreferrer">
+                            <span class="source-tag">Vietnam</span>
+                            <h4>South Korea and Vietnam sign 73 business deals</h4>
+                            <p>Reuters reported that the deals accompanied South Korean President Lee Jae Myung’s visit to Hanoi.</p>
+                            <span class="visit-link">Visit article</span>
                         </a>
 
-                        <a class="news-card" href="https://vietnamnews.vn/" target="_blank" rel="noopener noreferrer">
-                            <div class="news-card-body">
-                                <span class="source-tag">Vietnam</span>
-                                <h4>Vietnam News latest national coverage</h4>
-                                <p>National headlines covering politics, economy, society, culture, environment, science, and sport.</p>
-                                <span class="visit-link">Visit section</span>
-                            </div>
+                        <a class="news-card" href="https://www.reuters.com/legal/transactional/vietnam-plans-extend-tax-incentives-evs-until-2030-2026-04-20/" target="_blank" rel="noopener noreferrer">
+                            <span class="source-tag">Vietnam</span>
+                            <h4>Vietnam plans to extend EV tax incentives</h4>
+                            <p>Reuters reported Vietnam planned to extend a special consumption tax cut for electric vehicles until 2030.</p>
+                            <span class="visit-link">Visit article</span>
                         </a>
                     </div>
                 </div>
             </section>
-
         </main>
 
         <aside class="sidebar">
@@ -1044,42 +1037,42 @@
             <div class="widget">
                 <h2 class="section-title">Trending Topics</h2>
                 <ul>
-                    <li><a href="#archives">#ThaoAndMichael?</a></li>
-                    <li><a href="#status">66 Hours Served, 102 To Go</a></li>
-                    <li><a href="#statement">Couch-Based Crisis Management</a></li>
-                    <li><a href="#press-room">Hanoi Outing Becomes International Incident</a></li>
+                    <li><a href="#archives">#ThaoAndRobert</a></li>
+                    <li><a href="#photo-board">#MilkshakeDiplomacy</a></li>
+                    <li><a href="#press-room">#GymRedemption</a></li>
+                    <li><a href="#source-watch">#SaladDiplomacy</a></li>
                 </ul>
             </div>
 
             <div class="widget">
-                <aside class="ad-card sidebar-ad" aria-label="Advertisement: Couch Command Centre">
+                <aside class="ad-card sidebar-ad" aria-label="Advertisement: Silent Treatment Field Binoculars">
                     <div class="ad-image">
-                        <img src="ad5.png" alt="Advertisement image for Couch Command Centre">
+                        <img src="ad5.png" alt="Advertisement image for Silent Treatment Field Binoculars">
                     </div>
                     <div class="ad-body">
                         <span class="ad-label">Advertisement</span>
-                        <h3>Couch Command Centre</h3>
-                        <p>Transform any sofa into a full emotional operations room. Includes pillow helmet, phone grip, and deluxe sigh amplifier.</p>
-                        <span class="price-tag">Remote not included</span>
+                        <h3>Silent Treatment Field Binoculars</h3>
+                        <p>For long-distance relationship surveillance across 12 time zones. Comes with anti-panic lens cloth and dignity case.</p>
+                        <span class="price-tag">Dignity case included</span>
                     </div>
                 </aside>
             </div>
 
-            <div id="status" class="widget">
+            <div class="widget" id="status">
                 <h2 class="section-title">Sentence Status</h2>
                 <div class="sentence-meter">
-                    <div class="meter-label">66 of 168 hours served</div>
+                    <div class="meter-label">93 of 168 hours served</div>
                     <div class="meter-bar">
                         <div class="meter-fill"></div>
                     </div>
-                    <div class="meter-label">39.3% complete • 102 hours remaining</div>
+                    <div class="meter-label">55.4% complete • 75 hours remaining</div>
                 </div>
             </div>
 
-            <div id="statement" class="widget">
+            <div class="widget" id="statement">
                 <h2 class="section-title">Official Statement</h2>
                 <div class="statement-box">
-                    "I am not stalking. I am conducting a visual audit of publicly available emotional damage."
+                    “I may have introduced Robert, but I did not authorize him to become emotionally competitive.”
                     <br><br>
                     <strong>— Paulo da Silva</strong>
                 </div>
@@ -1089,7 +1082,7 @@
                 <h2 class="section-title">Correction Desk</h2>
                 <div class="correction-box">
                     <strong>Correction:</strong>
-                    The newsroom cannot confirm that Michael is a boyfriend. It can only confirm that Paulo reacted as if the entire United Nations had already recognized him as one.
+                    The newsroom cannot confirm Robert is a boyfriend. It can only confirm he has sunglasses, cash, nightlife energy, and a dangerous command of milkshake optics.
                 </div>
             </div>
 
@@ -1099,7 +1092,7 @@
 
     <footer>
         <p>Copyright © 2026 Doghouse Media Group. All rights reserved.</p>
-        <p>Current Sentence 39.3.8% complete • 102 hours remaining. Leniency review still not scheduled.</p>
+        <p>Current sentence 55.4% complete • 75 hours remaining. Leniency review still not scheduled.</p>
     </footer>
 
 </body>
