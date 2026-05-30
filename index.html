@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatiana & Alissia | The First Years / Les Premières Années</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+        body { 
+            font-family: 'Nunito', sans-serif; 
+            background-color: #FFFDF9; 
+            color: #4A4A4A; 
+            margin: 0; 
+            padding: 20px; 
+            background-image: radial-gradient(#FFD1DC 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .header-container { 
+            text-align: center; 
+            margin-bottom: 30px; 
+            background: linear-gradient(135deg, #FF9AA2, #FFBAC3); 
+            color: white; 
+            padding: 30px 20px; 
+            border-radius: 20px; 
+            box-shadow: 0 8px 15px rgba(255, 154, 162, 0.3); 
+        }
+        h1 { 
+            margin: 5px 0; 
+            font-size: 2.5em; 
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .quality-note {
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.4;
+        }
+        table { 
+            width: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            border-collapse: separate; 
+            border-spacing: 0;
+            background: #fff; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
+            border-radius: 15px; 
+            overflow: hidden; 
+        }
+        th, td { 
+            padding: 18px 20px; 
+            text-align: left; 
+            border-bottom: 1px solid #F0F0F0; 
+        }
+        th { 
+            background-color: #B5EAD7; 
+            color: #2C5E4A; 
+            text-transform: uppercase; 
+            font-size: 0.9em; 
+            font-weight: 800;
+            letter-spacing: 1.5px; 
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover { 
+            background-color: #FDFBF7; 
+        }
+        .date-col { 
+            width: 10%; 
+            font-weight: 700; 
+            color: #FFB7B2; 
+            font-size: 1.1em;
+        }
+        
+        /* New Styles for Thumbnails */
+        .video-info-cell {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .thumbnail {
+            width: 160px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+        .video-text {
+            flex-grow: 1;
+        }
+
+        .title-en { 
+            font-size: 1.2em; 
+            font-weight: 800; 
+            color: #6EB5FF; 
+            margin-bottom: 2px; 
+        }
+        .title-fr { 
+            font-size: 1.2em; 
+            font-weight: 800; 
+            color: #C7CEEA; 
+            margin-bottom: 8px; 
+        }
+        .desc-en { 
+            font-size: 0.95em; 
+            color: #666; 
+            margin-bottom: 3px; 
+        }
+        .desc-fr { 
+            font-size: 0.95em; 
+            color: #888; 
+            font-style: italic; 
+        }
+        .duration-col { 
+            width: 8%; 
+            text-align: center; 
+            color: #999; 
+            font-weight: 700;
+        }
+        .link-col { 
+            width: 15%; 
+            text-align: center; 
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+        }
+        a.watch-btn, a.download-btn { 
+            display: inline-block; 
+            text-decoration: none; 
+            font-weight: 800; 
+            padding: 10px 18px; 
+            border-radius: 25px; 
+            transition: all 0.3s ease; 
+            font-size: 0.9em;
+        }
+        a.watch-btn {
+            background: #FFDAC1; 
+            color: #D28258; 
+            box-shadow: 0 4px 6px rgba(255, 218, 193, 0.5);
+        }
+        a.watch-btn:hover { 
+            background: #E2F0CB; 
+            color: #7A9D54; 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 12px rgba(226, 240, 203, 0.6);
+        }
+        a.download-btn {
+            background: #B5EAD7; 
+            color: #2C5E4A; 
+            box-shadow: 0 4px 6px rgba(181, 234, 215, 0.5);
+        }
+        a.download-btn:hover {
+            background: #C7CEEA;
+            color: #5A6A9D;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(199, 206, 234, 0.6);
+        }
+        
+        @media (max-width: 900px) {
+            .btn-group { flex-direction: column; gap: 8px; }
+        }
+
+        @media (max-width: 768px) {
+            th, td { padding: 12px; }
+            .header-container h1 { font-size: 1.8em; }
+            .date-col { font-size: 0.9em; }
+            .video-info-cell {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .thumbnail {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>Tatiana & Alissia | The First Years</h1>
+        <h1>Tatiana & Alissia | Les Premières Années</h1>
+        <div class="quality-note">
+            (Better viewing quality if downloaded)<br>
+            (Meilleure qualité de visionnement si téléchargé)
+        </div>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Video & Description / Vidéo et Description</th>
+                <th>Duration</th>
+                <th>Links</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 2004 -->
+            <tr>
+                <td class="date-col">May 6, 2004<br>6 Mai 2004</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/May 6, 2004 - Waiting for Tatiana Pre-Birth-backdrop.png" alt="The Final Countdown" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">The Final Countdown</div>
+                            <div class="title-fr">Le Compte à Rebours</div>
+                            <div class="desc-en">The quiet anticipation just before Tatiana was born.</div>
+                            <div class="desc-fr">L'attente paisible juste avant la naissance de Tatiana.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:31:20</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1l0srmg4uoJRm2zjzqrNBlmlyVcC1NPLg/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1l0srmg4uoJRm2zjzqrNBlmlyVcC1NPLg" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2004</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2004_-_Tatianas_First_Days_of_Life-backdrop.png" alt="Welcome to the World, Tatiana!" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Welcome to the World, Tatiana!</div>
+                            <div class="title-fr">Bienvenue au Monde, Tatiana!</div>
+                            <div class="desc-en">The very first precious days of Tatiana's life.</div>
+                            <div class="desc-fr">Les tout premiers jours précieux de la vie de Tatiana.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:03:43</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/18EHOP1HMCwGp1xDw9nxcqxic-dHYFyRK/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=18EHOP1HMCwGp1xDw9nxcqxic-dHYFyRK" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Summer 2004<br>Été 2004</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Summer 2004 - Tatiana's Early Months & The Olympic Torch in Montreal-backdrop.png" alt="Tatiana's First Summer & The Olympic Torch" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Tatiana's First Summer & The Olympic Torch</div>
+                            <div class="title-fr">Le Premier Été de Tatiana & La Flamme Olympique</div>
+                            <div class="desc-en">Early months with Tatiana and watching the Olympic Torch pass through Montreal.</div>
+                            <div class="desc-fr">Les premiers mois avec Tatiana et le passage de la flamme olympique à Montréal.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:17:29</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1z1MelN_BEaxZkIn45AKtbTeV7rG1jpsM/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1z1MelN_BEaxZkIn45AKtbTeV7rG1jpsM" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Sept 12, 2004<br>12 Sept 2004</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Sept 12, 2004 - Tatiana's Baptism at Saint-Jean-Baptiste-backdrop.png" alt="Tatiana's Baptism" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Tatiana's Baptism</div>
+                            <div class="title-fr">Le Baptême de Tatiana</div>
+                            <div class="desc-en">A beautiful ceremony at Saint-Jean-Baptiste.</div>
+                            <div class="desc-fr">Une belle cérémonie à Saint-Jean-Baptiste.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:31:18</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1tjBQoHop5woXmcFC16iqoLGyTQ6GHSgJ/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1tjBQoHop5woXmcFC16iqoLGyTQ6GHSgJ" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2005 -->
+            <tr>
+                <td class="date-col">Jan 2005<br>Janv 2005</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2005 - Tatiana Daily Life January-backdrop.png" alt="Winter Warmth: Tatiana's Daily Life" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Winter Warmth: Tatiana's Daily Life</div>
+                            <div class="title-fr">Chaleur d'Hiver : Le Quotidien de Tatiana</div>
+                            <div class="desc-en">Everyday January moments with a growing baby.</div>
+                            <div class="desc-fr">Les moments du quotidien en janvier avec un bébé qui grandit.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:31:20</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/15Uka_HcNwFEYnrv8oUW9s3razwg9_T4O/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=15Uka_HcNwFEYnrv8oUW9s3razwg9_T4O" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Feb 2005<br>Fév 2005</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2005 - Tatiana Daily Life February-backdrop.png" alt="February Discoveries" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">February Discoveries</div>
+                            <div class="title-fr">Découvertes de Février</div>
+                            <div class="desc-en">More daily life and milestones as winter continues.</div>
+                            <div class="desc-fr">Plus de moments de la vie quotidienne et d'étapes importantes.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:31:48</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/15S55wpf4zOCGBd4u_guoOVBpRSpJPwAc/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=15S55wpf4zOCGBd4u_guoOVBpRSpJPwAc" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Winter 2005<br>Hiver 2005</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Circa 2005 - Winter Playtime, Family Birthdays, and the Montreal Biodome-backdrop.png" alt="Biodome Adventures & Winter Play" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Biodome Adventures & Winter Play</div>
+                            <div class="title-fr">Aventures au Biodôme et Jeux d'Hiver</div>
+                            <div class="desc-en">Family birthdays, playing in the snow, and exploring the Montreal Biodome.</div>
+                            <div class="desc-fr">Anniversaires en famille, jeux dans la neige et exploration du Biodôme de Montréal.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:54</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1VfN1WDgvyD5vCSXhuHk2Z89clvtAyk3O/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1VfN1WDgvyD5vCSXhuHk2Z89clvtAyk3O" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2005</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2005 - Tatiana First Steps and 1st Birthday-backdrop.png" alt="Tatiana's First Steps & 1st Birthday" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Tatiana's First Steps & 1st Birthday</div>
+                            <div class="title-fr">Premiers Pas et 1er Anniversaire de Tatiana</div>
+                            <div class="desc-en">Celebrating a major milestone as Tatiana learns to walk and turns one.</div>
+                            <div class="desc-fr">Célébration d'une grande étape : Tatiana apprend à marcher et fête son premier an.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:28:43</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1c7Elp2vk8aq7QIytgtkvYHAIqY6ztaXM/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1c7Elp2vk8aq7QIytgtkvYHAIqY6ztaXM" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Autumn 2005<br>Automne 2005</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2005_-_Autumn_Family_Dinners-backdrop.png" alt="Autumn Family Dinners" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Autumn Family Dinners</div>
+                            <div class="title-fr">Dîners de Famille en Automne</div>
+                            <div class="desc-en">Cozy family gatherings around the dinner table during the fall.</div>
+                            <div class="desc-fr">Réunions de famille chaleureuses autour de la table pendant l'automne.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:03:46</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/14_KZ3kTrMrw8NpQIb1w8hkuPgyOQny3c/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=14_KZ3kTrMrw8NpQIb1w8hkuPgyOQny3c" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2006 -->
+            <tr>
+                <td class="date-col">Spring 2006<br>Printemps 2006</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Spring 2006 - Waiting for Alissia, Easter Preparations, and Welcoming a New Baby Sister-backdrop.png" alt="Expecting Alissia & Easter Prep" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Expecting Alissia & Easter Prep</div>
+                            <div class="title-fr">En Attendant Alissia et Préparatifs de Pâques</div>
+                            <div class="desc-en">Getting ready to welcome a new baby sister and celebrating Easter.</div>
+                            <div class="desc-fr">Préparatifs pour accueillir une petite sœur et célébration de Pâques.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:45</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1OVAqIGPnq_ePe7bJ1fin0myBxdmd5Thn/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1OVAqIGPnq_ePe7bJ1fin0myBxdmd5Thn" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2006</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2006 - Alissia's Birth And Tatiana's First Meeting In Montreal - HiRes-backdrop.png" alt="Welcome Alissia: Sisters Meet" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Welcome Alissia: Sisters Meet</div>
+                            <div class="title-fr">Bienvenue Alissia : La Rencontre des Sœurs</div>
+                            <div class="desc-en">The birth of Alissia and the beautiful moment she meets Tatiana in Montreal.</div>
+                            <div class="desc-fr">La naissance d'Alissia et le beau moment où elle rencontre Tatiana à Montréal.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:44:21</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/159K40Gx6K_46biDMW6UKlRqK5CE3SQRI/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=159K40Gx6K_46biDMW6UKlRqK5CE3SQRI" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2006</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Circa 2006 - Tatiana Packing Books for the Pierrefonds Library-backdrop.png" alt="Library Helper Tatiana" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Library Helper Tatiana</div>
+                            <div class="title-fr">Tatiana, Assistante à la Bibliothèque</div>
+                            <div class="desc-en">Tatiana packing up books for a trip to the Pierrefonds Library.</div>
+                            <div class="desc-fr">Tatiana prépare des livres pour une sortie à la bibliothèque de Pierrefonds.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:00:54</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/18gJdxliKNvTmoGCpQd2vNSns6hRs4pHz/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=18gJdxliKNvTmoGCpQd2vNSns6hRs4pHz" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2006</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Circa 2006 - Tatiana at 22 Months Dinner Parties, Laundry Basket Rides, and Waiting for Baby Alissia-backdrop.png" alt="Toddler Life: Laundry Baskets & Dinner Parties" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Toddler Life: Laundry Baskets & Dinner Parties</div>
+                            <div class="title-fr">La Vie de Tout-Petit : Paniers à Linge et Dîners</div>
+                            <div class="desc-en">Tatiana at 22 months having fun at home while waiting for baby Alissia.</div>
+                            <div class="desc-fr">Tatiana à 22 mois s'amusant à la maison en attendant l'arrivée d'Alissia.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:01:30</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/15Jr7BlCaoIfUKLmrVBEixP-oU1UB-4Im/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=15Jr7BlCaoIfUKLmrVBEixP-oU1UB-4Im" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2006</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2006_-_Tatiana_2nd_Birthday_and_Baby_Alissia-backdrop.png" alt="Tatiana Turns Two!" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Tatiana Turns Two!</div>
+                            <div class="title-fr">Tatiana a Deux Ans !</div>
+                            <div class="desc-en">Tatiana's 2nd birthday celebrations with her new baby sister.</div>
+                            <div class="desc-fr">Célébration du 2e anniversaire de Tatiana avec sa petite sœur.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:59</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1PeyheQir6EXfEgmvEDdkAIXrwf1Tr7Q1/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1PeyheQir6EXfEgmvEDdkAIXrwf1Tr7Q1" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Summer 2006<br>Été 2006</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2006 - Summer Family Compilation Birthdays, Milestones & World Cup Fever-backdrop.png" alt="Summer of Milestones & World Cup" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Summer of Milestones & World Cup</div>
+                            <div class="title-fr">Été des Étapes Importantes et Coupe du Monde</div>
+                            <div class="desc-en">A lively summer compilation of family birthdays and World Cup fever.</div>
+                            <div class="desc-fr">Une compilation estivale animée des anniversaires en famille et de la fièvre de la Coupe du Monde.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:04:04</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1dGk64HTrT9j7m2QFg6rV6n2A6t3usWS1/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1dGk64HTrT9j7m2QFg6rV6n2A6t3usWS1" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2006-2007 Transition -->
+            <tr>
+                <td class="date-col">Late 2006 - Early 2007<br>Fin 2006 - Début 2007</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Late 2006 To Early 2007 - Tatiana Playing And Baby Alissia Growing Up-backdrop.png" alt="Growing Sisters" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Growing Sisters</div>
+                            <div class="title-fr">Des Sœurs qui Grandissent</div>
+                            <div class="desc-en">Tatiana playing and watching baby Alissia grow up through the winter months.</div>
+                            <div class="desc-fr">Tatiana joue et regarde le bébé Alissia grandir pendant les mois d'hiver.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:37</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1Bjb829EmAWa6WPMmndR6zQYonBGSjuAM/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1Bjb829EmAWa6WPMmndR6zQYonBGSjuAM" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2007 -->
+            <tr>
+                <td class="date-col">Winter 2007<br>Hiver 2007</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2007 - Winter Chaos Christmas Celebrations, Indoor Snow Bowls, and Toddler Milestones in Montreal-backdrop.png" alt="Montreal Winter Chaos & Christmas" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Montreal Winter Chaos & Christmas</div>
+                            <div class="title-fr">Chaos Hivernal et Noël à Montréal</div>
+                            <div class="desc-en">Christmas celebrations, indoor snowball fights, and toddler milestones.</div>
+                            <div class="desc-fr">Célébrations de Noël, batailles de boules de neige en intérieur et étapes des tout-petits.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:52</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/12OfjSRflFCNmfzE-f4Pe_lukIQ3ZRGr3/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=12OfjSRflFCNmfzE-f4Pe_lukIQ3ZRGr3" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Summer 2007<br>Été 2007</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2007 - Alissia's Summer Baptism, Restaurant Estrela do Oceano Reception & Home Playtime-backdrop.png" alt="Alissia's Baptism Celebration" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Alissia's Baptism Celebration</div>
+                            <div class="title-fr">Célébration du Baptême d'Alissia</div>
+                            <div class="desc-en">A summer baptism with a reception at Estrela do Oceano and playtime at home.</div>
+                            <div class="desc-fr">Un baptême estival avec réception à Estrela do Oceano et jeux à la maison.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:04:10</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1LAQVPw-hYoNfVpNL5mTXHBQRCotroXyG/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1LAQVPw-hYoNfVpNL5mTXHBQRCotroXyG" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2007</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Alissia's 18-Month Celebration & Playdough Cake (2007)-backdrop.png" alt="Alissia's 18-Month Playdough Cake" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Alissia's 18-Month Playdough Cake</div>
+                            <div class="title-fr">Le Gâteau en Pâte à Modeler d'Alissia (18 Mois)</div>
+                            <div class="desc-en">Celebrating Alissia being 18 months old with creative cake fun.</div>
+                            <div class="desc-fr">Célébration des 18 mois d'Alissia avec une création amusante de gâteau en pâte à modeler.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:08:02</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1hjOYeJRptIMaZZFWA8_qW7gD7JIocKyP/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1hjOYeJRptIMaZZFWA8_qW7gD7JIocKyP" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Winter 2007-2008<br>Hiver 2007-2008</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Winter 2007-2008 - Christmas Party And Playtime In Pierrefonds-backdrop.png" alt="Christmas Party in Pierrefonds" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Christmas Party in Pierrefonds</div>
+                            <div class="title-fr">Fête de Noël à Pierrefonds</div>
+                            <div class="desc-en">Holiday festivities and playtime fun wrapping up the year.</div>
+                            <div class="desc-fr">Festivités de fin d'année et moments de jeu pour clôturer l'année.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:55</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/10P3dhZWAeqh4l0-n9SwFHk9drgcRZSHN/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=10P3dhZWAeqh4l0-n9SwFHk9drgcRZSHN" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2008 -->
+            <tr>
+                <td class="date-col">2008</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2008 - Newborn Alissia, Backyard BBQs, and a Historical Village Field Trip-backdrop.png" alt="Historical Village & Backyard BBQs" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Historical Village & Backyard BBQs</div>
+                            <div class="title-fr">Village Historique et Barbecues</div>
+                            <div class="desc-en">A fun field trip, backyard grilling, and memories with Alissia.</div>
+                            <div class="desc-fr">Une sortie amusante, des grillades dans le jardin et des souvenirs avec Alissia.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:58</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1-bccckUByHWsibDIFf6XE9goDUWu9h9p/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1-bccckUByHWsibDIFf6XE9goDUWu9h9p" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Spring 2008<br>Printemps 2008</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2008 - Spring Birthdays Alissia Turns 2 And Tatiana Turns 4 - HiRes-backdrop.png" alt="Double Birthday: Alissia (2) & Tatiana (4)" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Double Birthday: Alissia (2) & Tatiana (4)</div>
+                            <div class="title-fr">Double Anniversaire : Alissia (2) & Tatiana (4)</div>
+                            <div class="desc-en">Spring celebrations for the girls' second and fourth birthdays.</div>
+                            <div class="desc-fr">Célébrations printanières pour le deuxième et le fourth anniversaire des filles.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:27:29</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/19otfLXi_e2mypmOVTXFMHP163ewXhgul/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=19otfLXi_e2mypmOVTXFMHP163ewXhgul" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2008</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Circa 2008 - Janine's 86th Birthday, Easter Singalongs, and Alissia's 1st Birthday-background.png" alt="Easter Singalongs & Great-Grandma's Birthday" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Easter Singalongs & Great-Grandma's Birthday</div>
+                            <div class="title-fr">Chansons de Pâques et Anniversaire de l'Arrière-Grand-Mère</div>
+                            <div class="desc-en">Easter music, Alissia's birthday moments, and Janine turning 86.</div>
+                            <div class="desc-fr">Musique de Pâques, moments d'anniversaire d'Alissia et les 86 ans de Janine.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:06:53</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1WWGqhQD9KwR0V-KmI40yXx1AGS9NB_yt/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1WWGqhQD9KwR0V-KmI40yXx1AGS9NB_yt" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">Summer 2008<br>Été 2008</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2008 - Summer Lake Days And The Gatineau Balloon Festival-backdrop.png" alt="Lake Days & Gatineau Balloons" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Lake Days & Gatineau Balloons</div>
+                            <div class="title-fr">Journées au Lac et Montgolfières de Gatineau</div>
+                            <div class="desc-en">Warm summer days by the lake and the colourful Gatineau Balloon Festival.</div>
+                            <div class="desc-fr">Journées chaudes d'été au bord du lac et le Festival des Montgolfières de Gatineau.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:02:59</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1uhM7Vip6yqmqaSVtv5fhBJXmZz1G14Dl/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1uhM7Vip6yqmqaSVtv5fhBJXmZz1G14Dl" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2009 -->
+            <tr>
+                <td class="date-col">2009</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Gym Ibik Show (Estimated 2005-2015)-backdrop.png" alt="Gym Ibik Spectacle" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Gym Ibik Spectacle</div>
+                            <div class="title-fr">Spectacle Gym Ibik</div>
+                            <div class="desc-en">A long-spanning compilation of gymnastics performances.</div>
+                            <div class="desc-fr">Une vaste compilation de performances de gymnastique.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:28:31</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1r8uYZddWegHr9fdfOYoIM7l-8IJJifUe/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1r8uYZddWegHr9fdfOYoIM7l-8IJJifUe" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2008 - 2010 -->
+            <tr>
+                <td class="date-col">2008 - 2010</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2008-2010 - The Girls Growing Up First Steps, Tricycle Rides, and Tatiana's Birthday in Montreal-backdrop.png" alt="The Girls Growing Up" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">The Girls Growing Up</div>
+                            <div class="title-fr">Les Filles Grandissent</div>
+                            <div class="desc-en">A montage of first steps, learning to ride tricycles, and Tatiana's birthday.</div>
+                            <div class="desc-fr">Un montage des premiers pas, l'apprentissage du tricycle et l'anniversaire de Tatiana.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:04:54</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1oC64ZPyKExSsMbEwORG7LQjiRmiZOjD3/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1oC64ZPyKExSsMbEwORG7LQjiRmiZOjD3" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2010 -->
+            <tr>
+                <td class="date-col">June 2010<br>Juin 2010</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Alissia Daycare Party - Circa June 2010 - Pierrefonds-backdrop.png" alt="Alissia's Daycare Party" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Alissia's Daycare Party</div>
+                            <div class="title-fr">Fête à la Garderie d'Alissia</div>
+                            <div class="desc-en">Fun and games at the daycare in Pierrefonds.</div>
+                            <div class="desc-fr">Amusement et jeux à la garderie à Pierrefonds.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:24:54</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1ZpVs0RG635TfUSzVB4LT_Fsny14YL7gd/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1ZpVs0RG635TfUSzVB4LT_Fsny14YL7gd" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2011 -->
+            <tr>
+                <td class="date-col">2011</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Circa 2011 - Family Trip to Holguín, Cuba & Bahía de Naranjo Dolphin Encounter-backdrop.png" alt="Cuba Trip: Dolphin Encounter" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Cuba Trip: Dolphin Encounter</div>
+                            <div class="title-fr">Voyage à Cuba : Rencontre avec les Dauphins</div>
+                            <div class="desc-en">Swimming and interacting with dolphins in Cuba.</div>
+                            <div class="desc-fr">Nager et interagir avec les dauphins à Cuba.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:16:35</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1P9VkgQmy3kiUBUaVNzqK3Jo9omjTtBw2/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1P9VkgQmy3kiUBUaVNzqK3Jo9omjTtBw2" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+               
+            <!-- 2012 -->
+            <tr>
+                <td class="date-col">Jan 14, 2012<br>14 Janv 2012</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/CTV News - Snowstorm - Jan 14, 2012-backdrop.png" alt="CTV News: The Big Snowstorm" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">CTV News: The Big Snowstorm - Tatiana & Alissia on the News</div>
+                            <div class="title-fr">Nouvelles CTV : La Grosse Tempête de Neige - Tatiana & Alissia aux nouvelles</div>
+                            <div class="desc-en">A recorded news segment covering the intense winter snowstorm.</div>
+                            <div class="desc-fr">Un extrait télévisé des nouvelles couvrant la tempête de neige intense.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:03:06</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1SNpxhd6N_XoXdUQTi_GWaW7POVsTcomU/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1SNpxhd6N_XoXdUQTi_GWaW7POVsTcomU" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="date-col">2012</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/Circa 2012 - Whale Watching Bergeronnes-backdrop.png" alt="Whale Watching at Les Bergeronnes" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">Whale Watching at Les Bergeronnes</div>
+                            <div class="title-fr">Observation des Baleines aux Bergeronnes</div>
+                            <div class="desc-en">Spotting marine life on a boat tour in Quebec.</div>
+                            <div class="desc-fr">Observation de la faune marine lors d'une excursion en bateau au Québec.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">00:01:09</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1meMmOqZKVUI52g37EX0vhGym8J2Q1bJG/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1meMmOqZKVUI52g37EX0vhGym8J2Q1bJG" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 2013 -->
+            <tr>
+                <td class="date-col">2013</td>
+                <td>
+                    <div class="video-info-cell">
+                        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/2013 - La Terre Notre Grand Jardin École Lanaudière School Show-backdrop.png" alt="School Show: La Terre Notre Grand Jardin" class="thumbnail">
+                        <div class="video-text">
+                            <div class="title-en">School Show: La Terre Notre Grand Jardin</div>
+                            <div class="title-fr">Spectacle Scolaire : La Terre Notre Grand Jardin</div>
+                            <div class="desc-en">A wonderful performance hosted at École Lanaudière.</div>
+                            <div class="desc-fr">Une merveilleuse représentation présentée à l'École Lanaudière.</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="duration-col">01:36:02</td>
+                <td class="link-col">
+                    <div class="btn-group">
+                        <a href="https://drive.google.com/file/d/1INSXJexc2_qlyYKjC3bT4TYWIZgVeRAa/view?usp=drive_link" class="watch-btn" target="_blank">Watch</a>
+                        <a href="https://drive.google.com/uc?export=download&id=1INSXJexc2_qlyYKjC3bT4TYWIZgVeRAa" class="download-btn" target="_blank">Download</a>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</body>
+</html>
