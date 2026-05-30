@@ -18,12 +18,20 @@
         }
         .header-container { 
             text-align: center; 
-            margin-bottom: 30px; 
+            margin-bottom: 25px; 
             background: linear-gradient(135deg, #FF9AA2, #FFBAC3); 
             color: white; 
             padding: 30px 20px; 
             border-radius: 20px; 
             box-shadow: 0 8px 15px rgba(255, 154, 162, 0.3); 
+        }
+        .banner-image {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
         h1 { 
             margin: 5px 0; 
@@ -38,6 +46,22 @@
             color: #000000;
             line-height: 1.4;
         }
+        
+        /* New Privacy Banner Styles */
+        .privacy-banner {
+            background-color: #B3E5FC; /* Baby Blue */
+            color: #D32F2F; /* Bold Red */
+            font-weight: 900;
+            text-align: center;
+            padding: 15px 20px;
+            margin: 0 auto 30px auto;
+            border-radius: 12px;
+            max-width: 900px;
+            font-size: 1.1em;
+            line-height: 1.5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
         table { 
             width: 100%; 
             max-width: 1200px; 
@@ -75,7 +99,7 @@
             font-size: 1.1em;
         }
         
-        /* New Styles for Thumbnails */
+        /* Styles for Thumbnails */
         .video-info-cell {
             display: flex;
             align-items: center;
@@ -180,18 +204,28 @@
                 width: 100%;
                 max-width: 250px;
             }
+            .privacy-banner {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="header-container">
+        <img src="https://raw.githubusercontent.com/paulofdx/paulo-ca-landing/main/folder.png" alt="Home Videos - Every Family Has A Story" class="banner-image">
+        
         <h1>Tatiana & Alissia | The First Years</h1>
         <h1>Tatiana & Alissia | Les Premières Années</h1>
         <div class="quality-note">
             (Better viewing quality if downloaded)<br>
             (Meilleure qualité de visionnement si téléchargé)
         </div>
+    </div>
+    
+    <div class="privacy-banner">
+        *** Videos are private and are only available to people that have been invited ***<br>
+        *** Les vidéos sont privées et ne sont accessibles qu'aux personnes qui ont été invitées ***
     </div>
     
     <table>
@@ -204,7 +238,6 @@
             </tr>
         </thead>
         <tbody>
-            <!-- 2004 -->
             <tr>
                 <td class="date-col">May 6, 2004<br>6 Mai 2004</td>
                 <td>
@@ -290,7 +323,6 @@
                 </td>
             </tr>
 
-            <!-- 2005 -->
             <tr>
                 <td class="date-col">Jan 2005<br>Janv 2005</td>
                 <td>
@@ -397,7 +429,6 @@
                 </td>
             </tr>
 
-            <!-- 2006 -->
             <tr>
                 <td class="date-col">Spring 2006<br>Printemps 2006</td>
                 <td>
@@ -525,7 +556,6 @@
                 </td>
             </tr>
 
-            <!-- 2006-2007 Transition -->
             <tr>
                 <td class="date-col">Late 2006 - Early 2007<br>Fin 2006 - Début 2007</td>
                 <td>
@@ -548,7 +578,6 @@
                 </td>
             </tr>
 
-            <!-- 2007 -->
             <tr>
                 <td class="date-col">Winter 2007<br>Hiver 2007</td>
                 <td>
@@ -634,7 +663,6 @@
                 </td>
             </tr>
 
-            <!-- 2008 -->
             <tr>
                 <td class="date-col">2008</td>
                 <td>
@@ -665,7 +693,7 @@
                             <div class="title-en">Double Birthday: Alissia (2) & Tatiana (4)</div>
                             <div class="title-fr">Double Anniversaire : Alissia (2) & Tatiana (4)</div>
                             <div class="desc-en">Spring celebrations for the girls' second and fourth birthdays.</div>
-                            <div class="desc-fr">Célébrations printanières pour le deuxième et le fourth anniversaire des filles.</div>
+                            <div class="desc-fr">Célébrations printanières pour le deuxième et le quatrième anniversaire des filles.</div>
                         </div>
                     </div>
                 </td>
@@ -720,7 +748,6 @@
                 </td>
             </tr>
 
-            <!-- 2009 -->
             <tr>
                 <td class="date-col">2009</td>
                 <td>
@@ -743,7 +770,6 @@
                 </td>
             </tr>
 
-            <!-- 2008 - 2010 -->
             <tr>
                 <td class="date-col">2008 - 2010</td>
                 <td>
@@ -766,7 +792,6 @@
                 </td>
             </tr>
 
-            <!-- 2010 -->
             <tr>
                 <td class="date-col">June 2010<br>Juin 2010</td>
                 <td>
@@ -789,7 +814,6 @@
                 </td>
             </tr>
 
-            <!-- 2011 -->
             <tr>
                 <td class="date-col">2011</td>
                 <td>
@@ -812,7 +836,6 @@
                 </td>
             </tr>
                
-            <!-- 2012 -->
             <tr>
                 <td class="date-col">Jan 14, 2012<br>14 Janv 2012</td>
                 <td>
@@ -856,7 +879,6 @@
                 </td>
             </tr>
 
-            <!-- 2013 -->
             <tr>
                 <td class="date-col">2013</td>
                 <td>
